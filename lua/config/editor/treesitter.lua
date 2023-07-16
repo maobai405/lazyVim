@@ -1,0 +1,40 @@
+return function()
+  return {
+    ensure_installed = {
+      -- "dart",
+      "bash",
+      "yaml",
+      "vim",
+      "vimdoc",
+      "lua",
+      "luadoc",
+      "luap",
+      "json",
+      "html",
+      "twig",
+      "javascript",
+      "typescript",
+      "tsx",
+      "vue",
+      "php",
+      "markdown",
+      "markdown_inline",
+      "c",
+      "python",
+      "query",
+      "regex",
+    },
+    highlight = { enable = true },
+    indent = { enable = true },
+    context_commentstring = { enable = true, enable_autocmd = false },
+    incremental_selection = {
+      enable = true,
+      keymaps = {
+        init_selection = "<c-space>",
+        node_incremental = "<c-space>",
+        scope_incremental = false,
+        node_decremental = "<bs>",
+      },
+    },
+  }
+end

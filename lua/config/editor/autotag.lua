@@ -1,0 +1,18 @@
+return function()
+  return {
+    filetypes = {
+      "html",
+      "javascript",
+      "typescript",
+      "javascriptreact",
+      "typescriptreact",
+      "vue",
+      "tsx",
+      "jsx",
+      "xml",
+      "php",
+      "markdown",
+      "astro",
+    },
+  }
+end
