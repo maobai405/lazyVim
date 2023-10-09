@@ -3,6 +3,7 @@ return function()
     ensure_installed = {
       -- "dart",
       "bash",
+      "fish",
       "yaml",
       "vim",
       "vimdoc",

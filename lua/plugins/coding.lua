@@ -26,9 +26,9 @@ return {
     },
   },
 
-  -- 通过Lua使用Neovim作为语言服务器 https://github.com/jose-elias-alvarez/null-ls.nvim
+  -- 通过Lua使用Neovim作为语言服务器 https://github.com/nvimtools/none-ls.nvim
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "mason.nvim",

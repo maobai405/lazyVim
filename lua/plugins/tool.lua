@@ -50,6 +50,15 @@ return {
     dependencies = { "romgrk/fzy-lua-native" },
   },
 
+  -- 翻译插件
+  {
+    "uga-rosa/translate.nvim",
+    keys = {
+      { "<leader>mm", "<Cmd>Translate zh<CR>", desc = "翻译", mode = { "v", "n" } },
+    },
+    opts = require("config.tool.translate"),
+  },
+
   ----------------------------------------------------------------------
   --                           Flutter Plugins                        --
   ----------------------------------------------------------------------
@@ -57,12 +66,13 @@ return {
   {
     "akinsho/flutter-tools.nvim",
     event = "BufReadPost",
-    opts = require("config.tool.flutter-tools"),
     dependencies = {
       "nvim-lua/plenary.nvim",
       "stevearc/dressing.nvim", -- optional for vim.ui.select
       "RobertBrunhage/flutter-riverpod-snippets",
     },
+    lazy = false,
+    opts = require("config.tool.flutter-tools"),
   },
 
   -- 运行代码插件 https://github.com/CRAG666/code_runner.nvim
@@ -81,7 +91,6 @@ return {
   {
     "mfussenegger/nvim-dap",
     keys = dapConfig.keys,
-    config = dapConfig.config,
     dependencies = {
       {
         "rcarriga/nvim-dap-ui",
@@ -112,5 +121,6 @@ return {
         },
       },
     },
+    config = dapConfig.config,
   },
 }
