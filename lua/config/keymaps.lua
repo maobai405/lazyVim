@@ -20,15 +20,17 @@ map("n", "<leader>l", "")
 map("n", "<leader>n", "<cmd>Lazy<cr>", { desc = "打开Lazy面板" })
 
 -- 替代^ 跳转到行首
-map("n", "<leader>h", "^")
-map("v", "<leader>h", "^")
+map("n", "<leader>h", "^", { desc = "跳转到行首" })
+map("v", "<leader>h", "^", { desc = "跳转到行首" })
 -- 替代$ 跳转到行尾
-map("n", "<leader>l", "$")
-map("v", "<leader>l", "$")
+map("n", "<leader>l", "$", { desc = "跳转到行尾" })
+map("v", "<leader>l", "$", { desc = "跳转到行尾" })
 
 -- control + shift + h/l 移动tab
-map("n", "<leader>bl", "<cmd>BufferLineMoveNext<cr>")
-map("n", "<leader>bh", "<cmd>BufferLineMovePrev<cr>")
+-- map("n", "<leader>bh", "<cmd>BufferLineMovePrev<cr>")
+-- map("n", "<leader>bl", "<cmd>BufferLineMoveNext<cr>")
+map("n", "<C-S-H>", "<cmd>BufferLineMovePrev<cr>")
+map("n", "<C-S-L>", "<cmd>BufferLineMoveNext<cr>")
 
 -- 禁用默认打开终端快捷键
 map("n", "<leader>ft", "")
