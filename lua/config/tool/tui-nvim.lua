@@ -9,7 +9,7 @@ return function()
 
     -- Example of a mapping
     mappings = {
-      { "<ESC>", "<C-\\><C-n>:q<CR>" },
+      -- { "<ESC>", "<cmd>q<cr>" },
     },
 
     -- Execute functions

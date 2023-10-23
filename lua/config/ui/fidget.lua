@@ -7,7 +7,7 @@ return function()
     },
     window = { blend = 0 },
     sources = {
-      ["null-ls"] = { ignore = true },
+      -- ["null-ls"] = { ignore = true },
     },
   }
 end

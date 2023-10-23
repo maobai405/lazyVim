@@ -1,16 +1,23 @@
 return function()
-  local icons = {
-    diagnostics = require("utils.icons").get("diagnostics"),
-    documents = require("utils.icons").get("documents"),
-    git = require("utils.icons").get("git"),
-    ui = require("utils.icons").get("ui"),
-  }
-
   return {
+    sources = { "filesystem", "buffers", "git_status", "document_symbols" },
+    open_files_do_not_replace_types = { "terminal", "Trouble", "qf", "Outline" },
     filesystem = {
       bind_to_cwd = false,
-      follow_current_file = true,
+      follow_current_file = { enabled = true },
       use_libuv_file_watcher = true,
+      window = {
+        mappings = {
+          ["S"] = "show_fs_stat",
+        },
+      },
+      commands = {
+        show_fs_stat = function(state)
+          local node = state.tree:get_node()
+          local command = "open " .. "-R " .. node.path
+          os.execute(command)
+        end,
+      },
     },
     window = {
       mappings = {

@@ -50,15 +50,6 @@ return {
     dependencies = { "romgrk/fzy-lua-native" },
   },
 
-  -- 翻译插件
-  {
-    "uga-rosa/translate.nvim",
-    keys = {
-      { "<leader>mm", "<Cmd>Translate zh<CR>", desc = "翻译", mode = { "v", "n" } },
-    },
-    opts = require("config.tool.translate"),
-  },
-
   ----------------------------------------------------------------------
   --                           Flutter Plugins                        --
   ----------------------------------------------------------------------

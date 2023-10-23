@@ -4,10 +4,13 @@ return function()
       color = {
         enabled = true,
         background = true,
-        virtual_text = false,
+        background_color = { r = 19, g = 17, b = 24 },
+        foreground = false,
+        virtual_text = true,
+        virtual_text_str = '■',
       },
       settings = {
-        showTodos = false,
+        showTodos = true,
         renameFilesWithClasses = "always",
         updateImportsOnRename = true,
         completeFunctionCalls = true,

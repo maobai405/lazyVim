@@ -26,11 +26,11 @@ return {
     },
   },
 
-  -- 启动页面 https://github.com/goolord/alpha-nvim
+  -- 启动页面
   {
-    "goolord/alpha-nvim",
+    "nvimdev/dashboard-nvim",
     event = "VimEnter",
-    opts = require("config.ui.alpha"),
+    opts = require("config.ui.dashboard"),
   },
 
   -- 消息通知 https://github.com/rcarriga/nvim-notify

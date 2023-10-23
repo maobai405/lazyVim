@@ -8,17 +8,18 @@ return {
   -- 文件查找等功能集成ui https://github.com/nvim-telescope/telescope.nvim
   {
     "nvim-telescope/telescope.nvim",
-    -- dependencies = {
-    --   -- 查看图片 https://github.com/nvim-telescope/telescope-media-files.nvim
-    --   { "nvim-telescope/telescope-media-files.nvim" },
-    -- },
     opts = require("config.editor.telescope"),
   },
 
   -- 语法高亮 https://github.com/nvim-treesitter/nvim-treesitter
   {
     "nvim-treesitter/nvim-treesitter",
+    commit = "f2778bd",
     dependencies = {
+      {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        commit = "35a60f0",
+      },
       {
         -- 显示代码上下文 https://github.com/nvim-treesitter/nvim-treesitter-context
         "nvim-treesitter/nvim-treesitter-context",
@@ -42,6 +43,13 @@ return {
       },
     },
     opts = require("config.editor.treesitter"),
+  },
+
+  -- 显示光标下单词 https://github.com/RRethy/vim-illuminate
+  {
+    "RRethy/vim-illuminate",
+    event = { "CursorHold", "CursorHoldI" },
+    opts = require("config.editor.vim-illuminate"),
   },
 
   -- 大文件预览 https://github.com/LunarVim/bigfile.nvim
