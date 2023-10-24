@@ -4,12 +4,13 @@ return {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "stylua",   -- lua
-        "shfmt",    -- bash, shell
-        "css-lsp",  -- css 语言服务器
+        "stylua", -- lua
+        "shfmt", -- bash, shell
+        "css-lsp", -- css 语言服务器
         "html-lsp", -- html 语言服务器
         "prettier", -- html, js, css 格式化
-        "biome",    -- javascript, javascriptreact, typescript, typescriptreact
+        "biome", -- javascript, javascriptreact, typescript, typescriptreact
+        "dart-debug-adapter", -- flutter,dart调试dap
       },
     },
   },
@@ -20,7 +21,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       { "folke/neoconf.nvim", cmd = "Neoconf" },
-      { "folke/neodev.nvim",  opts = { experimental = { pathStrict = true } } },
+      { "folke/neodev.nvim", opts = { experimental = { pathStrict = true } } },
       {
         "hrsh7th/cmp-nvim-lsp",
         cond = function()
@@ -46,6 +47,6 @@ return {
     "dnlhc/glance.nvim",
     lazy = true,
     event = "LspAttach",
-    opts = require("config.coding.glance")
-  }
+    opts = require("config.coding.glance"),
+  },
 }
