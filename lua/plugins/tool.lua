@@ -1,6 +1,3 @@
-local dapConfig = require("config.tool.dap.nvim-dap")
-local dapUiConfig = require("config.tool.dap.dap-ui")
-
 return {
   -- tui-nvim 直接在Neovim内部支持任何TUI https://github.com/is0n/tui-nvim
   {
@@ -50,6 +47,59 @@ return {
     dependencies = { "romgrk/fzy-lua-native" },
   },
 
+  -- 快捷打开yazi https://github.com/DreamMaoMao/yazi.nvim
+  {
+    "DreamMaoMao/yazi.nvim",
+    keys = {
+      { "<leader>yy", "<cmd>Yazi<CR>", desc = "Toggle Yazi" },
+    },
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "nvim-lua/plenary.nvim",
+    },
+  },
+
+  -- ChatGPT.nvim https://github.com/jackMort/ChatGPT.nvim
+  -- {
+  --   "jackMort/ChatGPT.nvim",
+  --   event = "VeryLazy",
+  --   dependencies = {
+  --     "MunifTanjim/nui.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-telescope/telescope.nvim",
+  --   },
+  --   opts = require("config.tool.chatgpt"),
+  -- },
+
+  ----------------------------------------------------------------------
+  --                           DAP Plugins                            --
+  ----------------------------------------------------------------------
+  -- {
+  --   "mfussenegger/nvim-dap",
+  --   lazy = true,
+  --   cmd = {
+  --     "DapSetLogLevel",
+  --     "DapShowLog",
+  --     "DapContinue",
+  --     "DapToggleBreakpoint",
+  --     "DapToggleRepl",
+  --     "DapStepOver",
+  --     "DapStepInto",
+  --     "DapStepOut",
+  --     "DapTerminate",
+  --   },
+  --   dependencies = {
+  --     {
+  --       "rcarriga/nvim-dap-ui",
+  --       keys = require("config.tool.dap.dap-ui").keys,
+  --       config = require("config.tool.dap.dap-ui").config,
+  --     },
+  --     { "jay-babu/mason-nvim-dap.nvim" },
+  --   },
+  --   keys = require("config.tool.dap.nvim-dap").keys,
+  --   config = require("config.tool.dap.nvim-dap").config,
+  -- },
+
   ----------------------------------------------------------------------
   --                           Flutter Plugins                        --
   ----------------------------------------------------------------------
@@ -77,41 +127,13 @@ return {
   },
 
   ----------------------------------------------------------------------
-  --                           DAP Plugins                            --
+  --                           Rust Plugins                           --
   ----------------------------------------------------------------------
-  {
-    "mfussenegger/nvim-dap",
-    keys = dapConfig.keys,
-    dependencies = {
-      {
-        "rcarriga/nvim-dap-ui",
-        keys = dapUiConfig.keys,
-        config = dapUiConfig.config,
-      },
-      {
-        "theHamsta/nvim-dap-virtual-text",
-        opts = {},
-      },
-      {
-        "folke/which-key.nvim",
-        opts = {
-          defaults = {
-            ["<leader>d"] = { name = "+debug" },
-            ["<leader>da"] = { name = "+adapters" },
-          },
-        },
-      },
-      {
-        "jay-babu/mason-nvim-dap.nvim",
-        dependencies = "mason.nvim",
-        cmd = { "DapInstall", "DapUninstall" },
-        opts = {
-          automatic_setup = true,
-          handlers = {},
-          ensure_installed = {},
-        },
-      },
-    },
-    config = dapConfig.config,
-  },
+  -- {
+  --   "simrat39/rust-tools.nvim",
+  --   keys = {
+  --     { "<leader>rsc", "<cmd>RustRun<cr>", desc = "运行Rust代码" },
+  --   },
+  --   opts = require("config.tool.rust-tools"),
+  -- },
 }

@@ -256,7 +256,7 @@ function M.get_lines()
     return vim.fn.getline(s_row)
   else
     local lines = vim.fn.getline(s_row, e_row)
-    return table.concat(lines, " ")
+    return table.concat(lines, "\n")
   end
 end
 

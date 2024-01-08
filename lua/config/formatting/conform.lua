@@ -3,7 +3,8 @@ return function()
     formatters_by_ft = {
       lua = { "stylua" },
       fish = { "fish_indent" },
-      sh = { "shfmt" },
+      -- sh = { "fish_indent" },
+      -- sh = { "shfmt" },
       html = { "prettier" },
       css = { "prettier" },
       scss = { "prettier" },
@@ -12,9 +13,13 @@ return function()
       javascriptreact = { "biome" },
       typescriptreact = { "biome" },
       json = { "biome" },
+      -- rust = { "rustfmt" },
     },
     formatters = {
       injected = { options = { ignore_errors = true } },
+      biome = {
+        prepend_args = { "format", "--config-path=" .. vim.fn.expand("~/.config/nvim/lua/config/formatting") },
+      },
     },
   }
 end

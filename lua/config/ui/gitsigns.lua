@@ -3,19 +3,19 @@ return function()
     signs = {
       add = {
         hl = "GitSignsAdd",
-        text = "╎",
+        text = "+",
         numhl = "GitSignsAddNr",
         linehl = "GitSignsAddLn",
       },
       change = {
         hl = "GitSignsChange",
-        text = "│",
+        text = "|",
         numhl = "GitSignsChangeNr",
         linehl = "GitSignsChangeLn",
       },
       delete = {
         hl = "GitSignsDelete",
-        text = "_",
+        text = "D",
         numhl = "GitSignsDeleteNr",
         linehl = "GitSignsDeleteLn",
       },

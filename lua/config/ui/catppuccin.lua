@@ -47,7 +47,7 @@ return function()
         },
       },
       aerial = false,
-      alpha = false,
+      alpha = true,
       barbar = false,
       beacon = false,
       cmp = true,
@@ -124,6 +124,7 @@ return function()
         return {
           -- For base configs.
           NormalFloat = { fg = cp.text, bg = settings.transparent_background and cp.none or cp.base },
+          Cursor = { bg = cp.green },
           CursorLineNr = { fg = cp.green },
           Search = { bg = cp.surface1, fg = cp.pink, style = { "bold" } },
           IncSearch = { bg = cp.pink, fg = cp.surface1 },

@@ -1,6 +1,6 @@
 local M = {}
 
-M.keys = {
+M["keys"] = {
   {
     "<leader>du",
     function()
@@ -21,6 +21,12 @@ M.keys = {
 M["config"] = function(_, opts)
   local dap = require("dap")
   local dapui = require("dapui")
+
+  local icons = {
+    ui = require("utils.icons").get("ui"),
+    dap = require("utils.icons").get("dap"),
+  }
+
   dapui.setup(opts)
   dap.listeners.after.event_initialized["dapui_config"] = function()
     dapui.open({})

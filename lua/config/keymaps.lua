@@ -1,4 +1,4 @@
--- Keymaps are automatically loaded on the VeryLazy event
+-- Keymaps are automatically loaded on the VeryLazy "event"
 -- 默认映射列表查看 https://www.lazyvim.org/keymaps
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
@@ -6,17 +6,20 @@ local Utils = require("utils")
 local lazyUtil = require("lazyvim.util")
 local map = lazyUtil.safe_keymap_set
 
+function encodeURL(s)
+  s = string.gsub(s, "%.", "-")
+  s = string.gsub(s, "([^%w%.%- ])", function(c)
+    return string.format("%%%02X", string.byte(c))
+  end)
+  return string.gsub(s, " ", "+")
+end
+
 -- 调用pot翻译快捷键
 map({ "n", "v" }, "<leader>mm", function()
   local mode = vim.fn.mode()
   local selected_text = Utils.get_text(mode)
-  -- 替换双引号为转义字符
-  selected_text = string.gsub(selected_text, '"', '\\"')
-  -- 构建 curl 命令并将输出重定向到/dev/null 避免返回信息干扰
-  local curl_command = string.format('curl -X POST -d "%s" 127.0.0.1:60828 > /dev/null 2>&1', selected_text)
-  -- 执行 curl 命令
-  os.execute(curl_command)
-  -- 退出visual模式
+  selected_text = encodeURL(selected_text)
+  os.execute("open easydict://" .. selected_text)
   vim.api.nvim_input("<Esc>")
 end, { desc = "翻译" })
 
@@ -34,19 +37,13 @@ map("v", "<leader>h", "^", { desc = "跳转到行首" })
 map("n", "<leader>l", "$", { desc = "跳转到行尾" })
 map("v", "<leader>l", "$", { desc = "跳转到行尾" })
 
--- control + shift + h/l 移动tab
-map("n", "<leader>bh", "<cmd>BufferLineMovePrev<cr>")
-map("n", "<leader>bl", "<cmd>BufferLineMoveNext<cr>")
-map("n", "<C-S-H>", "<cmd>BufferLineMovePrev<cr>")
-map("n", "<C-S-L>", "<cmd>BufferLineMoveNext<cr>")
-
 -- 禁用默认打开终端快捷键
 map("n", "<leader>ft", "")
 map("n", "<leader>fT", "")
 -- ToggleTerm 终端快捷指令
-map("n", "<C-\\>", "<cmd>ToggleTerm direction=horizontal<cr>", { desc = "打开终端" })
-map("i", "<C-\\>", "<cmd>ToggleTerm direction=horizontal<cr>", { desc = "打开终端" })
-map("t", "<C-\\>", "<Esc><cmd>ToggleTerm direction=horizontal<cr>", { desc = "关闭终端" })
+map("n", "<C-\\>", "<cmd>ToggleTerm<cr>", { desc = "打开终端" })
+map("i", "<C-\\>", "<cmd>ToggleTerm<cr>", { desc = "打开终端" })
+map("t", "<C-\\>", "<Esc><cmd>ToggleTerm<cr>", { desc = "关闭终端" })
 
 -- accelerated-jk 加速jk移动
 map("n", "j", "<Plug>(accelerated_jk_gj)")
@@ -57,24 +54,16 @@ map("n", "<leader>fl", "<cmd>Telescope flutter commands<cr>", { desc = "显示fl
 -- 启用基于telescope的fvm指令显示
 map("n", "<leader>fvm", "<cmd>Telescope flutter fvm<cr>", { desc = "切换flutter版本" })
 
--- 配置yazi快捷键
-map("n", "<leader>yy", function()
-  require("tui-nvim"):new({
-    cmd = "yazi --chooser-file=/tmp/tui-nvim --cwd=" .. vim.fn.fnameescape(vim.fn.expand("%:p")),
-  })
-end, { desc = "打开yazi-dir" })
-
-map("n", "<leader>yz", function()
-  require("tui-nvim"):new({
-    cmd = "yazi --chooser-file=/tmp/tui-nvim --cwd=" .. vim.fn.fnameescape(vim.fn.expand("%:p:h")),
-  })
-end, { desc = "打开yazi-当前路径" })
-
 -- lsp相关快捷键
 -- vim.keymap.set("n", "gd", "<cmd>Glance definitions<cr>", { remap = true, silent = true, desc = "跳转代码定义" })
 -- map('n', "gd", "<cmd>Glance definitions<cr>", { desc = "跳转代码定义" })
 map("n", "gh", "<cmd>Glance references<cr>", { desc = "显示引用" })
 
+-- Code Outline
+-- map("n", "<leader>cs", "<cmd>AerialToggle!<cr>", { desc = "启用Code Outline" })
+
+--- Rust 相关快捷键
+map("n", "<leader>rcs", "<cmd>RustRun<cr>", { desc = "运行Rust代码" })
 
 if vim.g.vscode then
   -- !!! 调用vscode命令

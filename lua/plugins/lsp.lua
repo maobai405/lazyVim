@@ -11,6 +11,9 @@ return {
         "prettier", -- html, js, css 格式化
         "biome", -- javascript, javascriptreact, typescript, typescriptreact
         "dart-debug-adapter", -- flutter,dart调试dap
+        "unocss-language-server",
+        "rust-analyzer",
+        "codelldb",
       },
     },
   },

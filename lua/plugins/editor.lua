@@ -14,11 +14,11 @@ return {
   -- 语法高亮 https://github.com/nvim-treesitter/nvim-treesitter
   {
     "nvim-treesitter/nvim-treesitter",
-    commit = "f2778bd",
+    -- commit = "f2778bd",
     dependencies = {
       {
         "nvim-treesitter/nvim-treesitter-textobjects",
-        commit = "35a60f0",
+        -- commit = "35a60f0",
       },
       {
         -- 显示代码上下文 https://github.com/nvim-treesitter/nvim-treesitter-context
@@ -53,10 +53,12 @@ return {
   },
 
   -- 大文件预览 https://github.com/LunarVim/bigfile.nvim
-  -- {
-  --   "LunarVim/bigfile.nvim",
-  --   opts = {},
-  -- },
+  {
+    "LunarVim/bigfile.nvim",
+    lazy = false,
+    config = require("config.editor.bigfile"),
+    cond = true,
+  },
 
   -- 加速jk移动 https://github.com/rainbowhxch/accelerated-jk.nvim
   {

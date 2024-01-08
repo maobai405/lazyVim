@@ -1,7 +1,7 @@
 return function()
   return {
     ensure_installed = {
-      "dart",
+      -- "dart",
       "bash",
       "fish",
       "yaml",
@@ -12,18 +12,13 @@ return function()
       "luap",
       "json",
       "html",
-      "twig",
       "javascript",
       "typescript",
       "tsx",
       "vue",
-      "php",
       "markdown",
       "markdown_inline",
-      "c",
-      "python",
-      "query",
-      "regex",
+      "rust",
     },
     highlight = { enable = true },
     indent = {
@@ -32,7 +27,6 @@ return function()
       --   "dart",
       -- },
     },
-    context_commentstring = { enable = true, enable_autocmd = false },
     matchup = { enable = true },
     incremental_selection = {
       enable = true,

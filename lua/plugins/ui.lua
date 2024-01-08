@@ -29,8 +29,16 @@ return {
   -- 启动页面
   {
     "nvimdev/dashboard-nvim",
+    enabled = false,
     event = "VimEnter",
     opts = require("config.ui.dashboard"),
+  },
+
+  {
+    "goolord/alpha-nvim",
+    enabled = true,
+    event = "VimEnter",
+    config = require("config.ui.alpha"),
   },
 
   -- 消息通知 https://github.com/rcarriga/nvim-notify
@@ -48,11 +56,14 @@ return {
   -- buffer栏 https://github.com/akinsho/bufferline.nvim
   {
     "akinsho/bufferline.nvim",
+    enabled = true,
     after = "catppuccin",
     event = "VeryLazy",
     keys = {
       { "<leader>bp", "<Cmd>BufferLineTogglePin<CR>", desc = "固定buffer" },
       { "<leader>bP", "<Cmd>BufferLineGroupClose ungrouped<CR>", desc = "清除所有buffer" },
+      { "<A-,>", "<Cmd>BufferLineMovePrev<CR>", desc = "buffer左移" },
+      { "<A-.>", "<Cmd>BufferLineMoveNext<CR>", desc = "buffer左移" },
     },
     opts = require("config.ui.bufferline"),
   },
@@ -84,5 +95,19 @@ return {
     "karb94/neoscroll.nvim",
     event = "BufReadPost",
     opts = require("config.ui.neoscroll"),
+  },
+
+  -- 作用域范围 https://github.com/echasnovski/mini.indentscope
+  {
+    "echasnovski/mini.indentscope",
+    event = "LazyFile",
+    opts = {
+      symbol = "╎",
+      draw = {
+        animation = function()
+          return 40
+        end,
+      },
+    },
   },
 }

@@ -49,8 +49,8 @@ return function()
     sorting = {
       priority_weight = 2,
       comparators = {
-        require("copilot_cmp.comparators").prioritize,
-        require("copilot_cmp.comparators").score,
+        -- require("copilot_cmp.comparators").prioritize,
+        -- require("copilot_cmp.comparators").score,
         -- require("cmp_tabnine.compare"),
         compare.offset, -- Items closer to cursor will have lower priority
         compare.exact,
@@ -71,8 +71,7 @@ return function()
       format = function(entry, vim_item)
         local lspkind_icons = vim.tbl_deep_extend("force", icons.kind, icons.type, icons.cmp)
         -- load lspkind icons
-        vim_item.kind =
-            string.format(" %s  %s", lspkind_icons[vim_item.kind] or icons.cmp.undefined, vim_item.kind or "")
+        vim_item.kind = string.format(" %s  %s", lspkind_icons[vim_item.kind] or icons.cmp.undefined, vim_item.kind or "")
 
         vim_item.menu = setmetatable({
           cmp_tabnine = "[TN]",
@@ -148,15 +147,15 @@ return function()
       { name = "nvim_lua" },
       { name = "luasnip" },
       { name = "path" },
-      { name = "treesitter"
-      },
+      { name = "treesitter" },
       { name = "spell" },
       { name = "tmux" },
       { name = "orgmode" },
       { name = "buffer" },
       { name = "latex_symbols" },
       { name = "copilot" },
-      -- { name = "codeium" },
+      -- { name = "crates" },
+      { name = "codeium" },
       -- { name = "cmp_tabnine" },
     },
     experimental = {

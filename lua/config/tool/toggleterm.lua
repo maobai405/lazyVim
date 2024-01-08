@@ -1,5 +1,7 @@
 return function()
   local colors = require("utils").get_palette()
+  local lazyUtil = require("lazyvim.util")
+  local map = lazyUtil.safe_keymap_set
 
   return {
     size = function(term)
@@ -10,7 +12,8 @@ return function()
       end
     end,
     open_mapping = [[<C-\>]],
-    direction = "horizontal",
+    -- direction = "horizontal",
+    direction = "float",
     shade_filetypes = {},
     hide_numbers = true,
     insert_mappings = true,

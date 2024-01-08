@@ -26,9 +26,21 @@ return {
     opts = require("config.coding.cmp"),
   },
 
+  -- 代码大纲code outline https://github.com/stevearc/aerial.nvim
+  {
+    "stevearc/aerial.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+    keys = require("config.coding.aerial").keys,
+    opts = require("config.coding.aerial").config,
+  },
+
   -- 功能齐全且增强的copilot.vim替代品，包含用于与Github Copilot交互的API https://github.com/zbirenbaum/copilot.lua
   {
     "zbirenbaum/copilot.lua",
+    enabled = false,
     cmd = "Copilot",
     event = "InsertEnter",
     build = ":Copilot auth",

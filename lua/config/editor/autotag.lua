@@ -10,7 +10,6 @@ return function()
       "tsx",
       "jsx",
       "xml",
-      "php",
       "markdown",
       "astro",
     },
