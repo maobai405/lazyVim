@@ -1,7 +1,7 @@
 return function()
   return {
     ensure_installed = {
-      -- "dart",
+      "dart",
       "bash",
       "fish",
       "yaml",
@@ -23,9 +23,9 @@ return function()
     highlight = { enable = true },
     indent = {
       enable = true,
-      -- disable = {
-      --   "dart",
-      -- },
+      disable = {
+        "dart",
+      },
     },
     matchup = { enable = true },
     incremental_selection = {

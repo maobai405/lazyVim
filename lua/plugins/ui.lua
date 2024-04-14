@@ -29,16 +29,8 @@ return {
   -- 启动页面
   {
     "nvimdev/dashboard-nvim",
-    enabled = false,
     event = "VimEnter",
     opts = require("config.ui.dashboard"),
-  },
-
-  {
-    "goolord/alpha-nvim",
-    enabled = true,
-    event = "VimEnter",
-    config = require("config.ui.alpha"),
   },
 
   -- 消息通知 https://github.com/rcarriga/nvim-notify

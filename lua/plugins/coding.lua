@@ -52,4 +52,14 @@ return {
     },
     opts = require("config.coding.copilot"),
   },
+
+  -- tailwindcss-colorizer-cmp TailwindCSS 着色器 CMP https://github.com/roobert/tailwindcss-colorizer-cmp.nvim
+  {
+    "roobert/tailwindcss-colorizer-cmp.nvim",
+    config = function()
+      require("tailwindcss-colorizer-cmp").setup({
+        color_square_width = 10,
+      })
+    end,
+  },
 }

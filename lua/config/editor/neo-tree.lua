@@ -20,6 +20,7 @@ return function()
       },
     },
     window = {
+      -- position = "float",
       mappings = {
         ["<space>"] = "none",
         ["<Tab>"] = "open",

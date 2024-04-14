@@ -74,6 +74,7 @@ return function()
         vim_item.kind = string.format(" %s  %s", lspkind_icons[vim_item.kind] or icons.cmp.undefined, vim_item.kind or "")
 
         vim_item.menu = setmetatable({
+          treesitter = "[TS]",
           cmp_tabnine = "[TN]",
           copilot = "[CPLT]",
           buffer = "[BUF]",
@@ -82,7 +83,6 @@ return function()
           nvim_lua = "[LUA]",
           path = "[PATH]",
           tmux = "[TMUX]",
-          treesitter = "[TS]",
           latex_symbols = "[LTEX]",
           luasnip = "[SNIP]",
           spell = "[SPELL]",
@@ -97,6 +97,8 @@ return function()
         if truncated_label ~= label then
           vim_item.abbr = truncated_label .. "..."
         end
+
+        require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
 
         return vim_item
       end,
@@ -143,11 +145,12 @@ return function()
 
     -- You should specify your *installed* sources.
     sources = {
+      { name = "treesitter" },
+      { name = "codeium" },
       { name = "nvim_lsp" },
       { name = "nvim_lua" },
       { name = "luasnip" },
       { name = "path" },
-      { name = "treesitter" },
       { name = "spell" },
       { name = "tmux" },
       { name = "orgmode" },
@@ -155,8 +158,7 @@ return function()
       { name = "latex_symbols" },
       { name = "copilot" },
       -- { name = "crates" },
-      { name = "codeium" },
-      -- { name = "cmp_tabnine" },
+      -- {name = "cmp_tabnine" },
     },
     experimental = {
       ghost_text = {

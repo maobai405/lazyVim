@@ -17,7 +17,7 @@ return function()
      ⡝⡵⡕⡀⠑⠳⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⠿⠛⢉⡠⡲⡫⡪⡪⡣
   ]]
 
-  logo = string.rep("\n", 8) .. logo .. "\n\n"
+  logo = string.rep("\n", 5) .. logo .. "\n\n"
 
   -- 设置高亮
   vim.cmd([[hi DashboardHeader guifg=#96CDFB]])

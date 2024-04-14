@@ -79,4 +79,21 @@ return {
     "mg979/vim-visual-multi",
     lazy = false,
   },
+
+  -- markdown 预览
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function()
+      vim.fn["mkdp#util#install"]()
+    end,
+  },
+
+  -- Zellij integration https://github.com/Lilja/zellij.nvim
+  {
+    "Lilja/zellij.nvim",
+    keys = require("config.editor.zellij").keys,
+    opts = {},
+  },
 }

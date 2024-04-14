@@ -14,7 +14,7 @@ function encodeURL(s)
   return string.gsub(s, " ", "+")
 end
 
--- 调用pot翻译快捷键
+-- 调用easydict翻译快捷键
 map({ "n", "v" }, "<leader>mm", function()
   local mode = vim.fn.mode()
   local selected_text = Utils.get_text(mode)
@@ -59,30 +59,30 @@ map("n", "<leader>fvm", "<cmd>Telescope flutter fvm<cr>", { desc = "切换flutte
 -- map('n', "gd", "<cmd>Glance definitions<cr>", { desc = "跳转代码定义" })
 map("n", "gh", "<cmd>Glance references<cr>", { desc = "显示引用" })
 
--- Code Outline
--- map("n", "<leader>cs", "<cmd>AerialToggle!<cr>", { desc = "启用Code Outline" })
-
 --- Rust 相关快捷键
-map("n", "<leader>rcs", "<cmd>RustRun<cr>", { desc = "运行Rust代码" })
+-- map("n", "<leader>rcs", "<cmd>RustRun<cr>", { desc = "运行Rust代码" })
+
+-- Electron 相关快捷键
+map("n", "<leader>rse", "<cmd><cr>", { desc = "重新运行Electron应用" })
 
 if vim.g.vscode then
   -- !!! 调用vscode命令
+  map({ "n", "v" }, "gc", "<Cmd>call VSCodeNotify('editor.action.commentLine')<CR>")
+  map("n", "<leader>ca", "<Cmd>call VSCodeNotify('editor.action.quickFix')<CR>")
+  -- 行移动
+  map({ "n", "i", "v" }, "<A-j>", "<Cmd>m .+1<cr>==<CR>")
+  map({ "n", "i", "v" }, "<A-k>", "<Cmd><cmd>m .-2<cr>==<CR>")
   -- 打开文件查询面板
-  map("n", "<leader>f", "<Cmd>call VSCodeNotify('workbench.action.quickOpen')<CR>")
   map("n", "<leader><leader>", "<Cmd>call VSCodeNotify('workbench.action.quickOpen')<CR>")
-  -- 打开lazygit面板
-  map("n", "<leader>gg", "<Cmd>call VSCodeNotify('lazygit.openLazygit')<CR>")
   -- 在侧边栏显示当前文件
   map("n", "<leader>e", "<Cmd>call VSCodeNotify('workbench.files.action.focusFilesExplorer')<CR>")
   -- 折叠代码
   map("n", "za", "<Cmd>call VSCodeNotify('editor.toggleFold')<CR>")
   -- 当前光标word查询
-  map("n", "?", "<Cmd>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>")
+  map("n", "?", "<Cmd>call VSCodeNotify('actions.find')<CR>")
 
-  -- 切换上一个tab
-  map("n", "<S-H>", "<Cmd>call VSCodeNotify('workbench.action.previousEditor')<CR>")
-  -- 切换下一个tab
-  map("n", "<S-L>", "<Cmd>call VSCodeNotify('workbench.action.nextEditor')<CR>")
+  -- 调用 Toggle Boolean 插件完成布尔值快速切换
+  map("n", "<leader>i", "<Cmd>call  VSCodeNotify('extension.toggleBool')<CR>")
 
   -- run_code
   map("n", "<leader>rc", "<Cmd>call VSCodeNotify('code-runner.run')<CR>")

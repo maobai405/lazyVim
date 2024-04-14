@@ -11,7 +11,7 @@ if vim.g.vscode then
     { "hrsh7th/nvim-cmp", enabled = false },
     -- 功能齐全且增强的copilot.vim替代品
     { "zbirenbaum/copilot.lua", enabled = false },
-    
+
     -- !!! editor目录
     -- 文件树插件
     { "nvim-neo-tree/neo-tree.nvim", enabled = false },
@@ -23,7 +23,7 @@ if vim.g.vscode then
     { "smjonas/inc-rename.nvim", enabled = false },
     -- 多光标插件
     { "mg979/vim-visual-multi", enabled = false },
-    
+
     -- !!! tool目录
     -- 显示ranger等tui插件
     { "is0n/tui-nvim", enabled = false },
@@ -41,7 +41,7 @@ if vim.g.vscode then
     { "CRAG666/code_runner.nvim", enabled = false },
     -- dap插件
     { "mfussenegger/nvim-dap", enabled = false },
-    
+
     -- !!! ui目录
     -- buffer
     { "akinsho/bufferline.nvim", enabled = false },
@@ -49,11 +49,13 @@ if vim.g.vscode then
     { "nvim-lualine/lualine.nvi", enabled = false },
     -- lsp渲染进度
     { "j-hui/fidget.nvim", enabled = false },
-    
+    -- 作用域范围
+    { "echasnovski/mini.indentscope", enabled = false },
+
     -- lazyVim自带插件
     -- nvim-spectre 在多个文件中搜索/替换
     { "nvim-pack/nvim-spectre", enabled = false },
-      -- nvim-pack/nvim-spectre 自动高亮显示光标下的单词的其他实例。它使用LSP、Treesitter和regexp匹配来查找其他实例。
+    -- nvim-pack/nvim-spectre 自动高亮显示光标下的单词的其他实例。它使用LSP、Treesitter和regexp匹配来查找其他实例。
     { "RRethy/vim-illuminate", enabled = false },
     -- nvim-lspconfig
     { "neovim/nvim-lspconfig", enabled = false },

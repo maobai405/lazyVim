@@ -6,12 +6,15 @@ return {
       ensure_installed = {
         "stylua", -- lua
         "shfmt", -- bash, shell
+        "tailwindcss-language-server", -- tailwindcss 语言服务器
+        "unocss-language-server",
         "css-lsp", -- css 语言服务器
         "html-lsp", -- html 语言服务器
-        "prettier", -- html, js, css 格式化
-        "biome", -- javascript, javascriptreact, typescript, typescriptreact
+        "prettier",
+        "vtsls", -- js lsp
+        "vue-language-server", -- vue 语言服务器
+        -- "biome", -- javascript, javascriptreact, typescript, typescriptreact
         "dart-debug-adapter", -- flutter,dart调试dap
-        "unocss-language-server",
         "rust-analyzer",
         "codelldb",
       },
