@@ -1,0 +1,8 @@
+{
+    "diagnostics.disable": [
+        "redundant-value"
+    ],
+    "diagnostics.globals": [
+        "ap"
+    ]
+}
