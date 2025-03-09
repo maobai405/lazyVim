@@ -1,14 +1,11 @@
 ---@class Options
----@field theme string 主题 catppuccin, tokyonight, rose-pine
+---@field theme string 主题 catppuccin, rose-pine
 
 ---@type Options
 local M = {}
 
 -- ui 相关
-M.theme = "catppuccin-mocha"
+M.theme = "catppuccin"
 -- M.theme = "rose-pine"
--- M.theme = "tokyonight"
-
--- lsp 相关
 
 return M

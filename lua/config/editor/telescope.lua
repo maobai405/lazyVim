@@ -23,6 +23,15 @@ M.config = {
         results_width = 0.8,
       },
     },
+    vimgrep_arguments = {
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--fixed-strings", -- 全局禁用正则，按字面匹配
+    },
   },
 }
 

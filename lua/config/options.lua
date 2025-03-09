@@ -4,6 +4,8 @@
 
 local opt = vim.opt
 
+-- opt.background = "light"
+opt.background = "dark"
 opt.pumblend = 0 -- !!! 补全菜单的透明度
 opt.autoindent = true -- 自动缩进
 opt.autoread = true -- 当文件在外部被修改时，自动重新读取文件
@@ -29,7 +31,8 @@ opt.equalalways = true -- 当窗口大小改变时，是否重新分配窗口大
 opt.errorbells = true -- 是否在错误时响铃
 opt.visualbell = true -- 是否使用可视化的方式显示响铃
 opt.expandtab = true -- 是否将tab键转换为空格
-opt.fileformats = "unix,mac,dos" -- 定义文件的行尾格式
+opt.fileformat = "unix" -- 控制当前缓冲区的换行符类型
+opt.fileformats = "unix" -- 定义自动检测换行符时的优先级列表
 opt.foldenable = true -- 是否启用折叠
 opt.foldlevelstart = 99 -- 定义打开文件时的折叠级别
 opt.formatoptions = "1jcroql" -- 定义格式化时的选项
@@ -43,10 +46,10 @@ opt.inccommand = "nosplit" -- 定义增量替换时的行为
 opt.incsearch = true -- 实时搜索
 opt.infercase = true -- 是否根据输入的大小写进行匹配
 opt.jumpoptions = "stack" -- 跳转命令的选项
-opt.laststatus = 2 -- 定义状态栏的显示方式
+opt.laststatus = 3 -- 定义状态栏的显示方式
 opt.linebreak = true -- 是否在单词内换行
 opt.list = false -- 是否显示不可见字符
--- opt.listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←" -- 定义不可见字符的显示方式
+opt.listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←" -- 定义不可见字符的显示方式
 opt.magic = true -- 开启魔术符号
 opt.mousescroll = "ver:3,hor:6"
 opt.number = true -- 是否显示行号
@@ -99,4 +102,4 @@ opt.swapfile = false -- 是否生成交换文件
 opt.writebackup = false -- 是否在保存文件时生成备份文件
 opt.paste = false
 opt.mousemoveevent = true -- 相应悬停事件
-opt.guicursor = "n-v:block-Cursor-blinkon500,i:ver100-Cursor-blinkon500" -- 控制光标的外观和行为
+-- opt.guicursor = "n-v:block-Cursor-blinkon500,i:ver100-Cursor-blinkon500" -- 控制光标的外观和行为

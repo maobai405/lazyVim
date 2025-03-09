@@ -29,11 +29,15 @@ require("lazy").setup({
     version = false, -- always use the latest git commit
     -- version = "*", -- try installing the latest stable version for plugins that support semver
   },
-  install = { colorscheme = { "catppuccin", "tokyonight", "habamax" } },
+  install = { colorscheme = { "catppuccin", "rose-pine" } },
   checker = {
     enabled = true, -- check for plugin updates periodically
     notify = false, -- notify on update
   }, -- automatically check for plugin updates
+  ui = {
+    title = " lazy.nvim 💤",
+    border = "rounded",
+  },
   performance = {
     rtp = {
       -- disable some rtp plugins

@@ -30,6 +30,8 @@ map("n", "<leader>sa", "<cmd>:w<cr>", { desc = "保存文件" })
 -- accelerated-jk 加速jk移动
 map("n", "j", "<Plug>(accelerated_jk_gj)")
 map("n", "k", "<Plug>(accelerated_jk_gk)")
+map({ "n", "v" }, "<C-j>", "5j")
+map({ "n", "v" }, "<C-k>", "5k")
 
 -- 插入模式下移动光标
 map("i", "<C-a>", "<End>")
@@ -41,3 +43,12 @@ map("i", "<C-k>", "<Up>")
 
 -- 插入模式快速退出
 map("i", "jk", "<Esc>")
+
+map("n", "<leader>bD", function()
+  Snacks.bufdelete.all()
+end, { desc = "删除所有buffer" })
+
+vim.api.nvim_set_keymap("", "<D-v>", "+p<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("!", "<D-v>", "<C-R>+", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("t", "<D-v>", "<C-R>+", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<D-v>", "<C-R>+", { noremap = true, silent = true })

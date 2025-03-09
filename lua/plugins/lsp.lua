@@ -6,6 +6,7 @@ return {
       -- disable a keymap
       keys[#keys + 1] = { "K", false }
       keys[#keys + 1] = { "gd", false }
+      keys[#keys + 1] = { "<C-k>", false, mode = { "i" } }
       keys[#keys + 1] = { "<leader>ca", false }
     end,
   },

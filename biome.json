@@ -1,0 +1,15 @@
+{
+  "formatter": {
+    "indentWidth": 4,
+    "lineWidth": 320
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "jsxQuoteStyle": "single",
+      "trailingCommas": "all",
+      "semicolons": "asNeeded",
+      "arrowParentheses": "asNeeded"
+    }
+  }
+}

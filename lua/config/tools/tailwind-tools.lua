@@ -1,6 +1,11 @@
 local M = {}
 
-M.keys = {}
+M.keys = {
+  { "<leader>tt", "<cmd>TailwindConcealToggle<cr>", { desc = "Tailwindcss 切换Tailwindcss隐藏" } },
+  { "<leader>ts", "<cmd>TailwindSort<cr>", { desc = "Tailwindcss 排序" } },
+  { "<leader>tj", "<cmd>TailwindNextClass<cr>", { desc = "Tailwindcss 将光标移动到下一个类点" } },
+  { "<leader>tk", "<cmd>TailwindPrevClass<cr>", { desc = "Tailwindcss 将光标移动到下一个类点" } },
+}
 
 M.config = {
   document_color = {
