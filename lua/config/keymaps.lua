@@ -5,6 +5,9 @@
 local utils = require("utils")
 local map = LazyVim.safe_keymap_set
 
+-- 不清楚哪儿设置的 n 映射为 i ,删除映射
+vim.keymap.del("n", "n")
+
 -- 调用easydict翻译快捷键
 map({ "n", "v" }, "<leader>mm", function()
   local mode = vim.fn.mode()
@@ -30,8 +33,8 @@ map("n", "<leader>sa", "<cmd>:w<cr>", { desc = "保存文件" })
 -- accelerated-jk 加速jk移动
 map("n", "j", "<Plug>(accelerated_jk_gj)")
 map("n", "k", "<Plug>(accelerated_jk_gk)")
-map({ "n", "v" }, "<C-j>", "5j")
-map({ "n", "v" }, "<C-k>", "5k")
+map({ "n", "v" }, "<S-j>", "5j")
+map({ "n", "v" }, "<S-k>", "5k")
 
 -- 插入模式下移动光标
 map("i", "<C-a>", "<End>")

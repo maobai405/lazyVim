@@ -1,8 +1,8 @@
 local M = {}
 
 M.keys = {
-  { "K", "<cmd>Lspsaga hover_doc<cr>" },
   { "<leader>ca", "<cmd>Lspsaga code_action<cr>", { desc = "LSP 修复" } },
+  { "gk", "<cmd>Lspsaga hover_doc<cr>" },
   { "gh", "<cmd>Lspsaga finder<cr>", desc = "LSP 显示当前字词的引用" },
   { "gp", "<cmd>Lspsaga peek_definition<cr>", desc = "LSP 预览当前位置代码详情" },
   -- 跳转到定义

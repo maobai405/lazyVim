@@ -8,6 +8,7 @@ function M.init()
 end
 
 function M.config()
+  vim.o.guifont = "Maple_Mono_NF_CN:h14:i"
   -- 没有空闲
   vim.g.neovide_no_idle = true
   -- 退出需要确认
@@ -45,14 +46,14 @@ function M.background()
   -- 设置透明背景
   vim.g.transparency = 0
   vim.g.neovide_opacity = 0
-  vim.g.neovide_normal_opacity = 0.9
+  vim.g.neovide_normal_opacity = 0.7
   -- 窗口模糊
   vim.g.neovide_window_blurred = true
 
-  vim.g.neovide_floating_shadow = true
-  vim.g.neovide_floating_z_height = 10
-  vim.g.neovide_light_angle_degrees = 45
-  vim.g.neovide_light_radius = 5
+  -- vim.g.neovide_floating_shadow = true
+  -- vim.g.neovide_floating_z_height = 10
+  -- vim.g.neovide_light_angle_degrees = 45
+  -- vim.g.neovide_light_radius = 5
 end
 
 -- 设置fps

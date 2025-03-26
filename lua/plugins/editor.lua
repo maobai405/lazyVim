@@ -34,7 +34,7 @@ return {
         typescript = { "prettier", lsp_format = "fallback" },
         javascriptreact = { "prettier", lsp_format = "fallback" },
         typescriptreact = { "prettier", lsp_format = "fallback" },
-        -- rust = { "rustfmt" },
+        rust = { "rustfmt" },
         -- dart = { "dart_format" },
       },
       formatters = {
