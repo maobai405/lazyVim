@@ -4,6 +4,16 @@ M.keys = {
   { "<leader>sa", false },
 }
 
-M.config = {}
+M.config = {
+  winopts = {
+    backdrop = 100,
+  },
+  keymap = {
+    fzf = {
+      ["tab"] = "down",
+      ["shift-tab"] = "up",
+    },
+  },
+}
 
 return M

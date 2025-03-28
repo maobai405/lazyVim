@@ -19,51 +19,7 @@ return {
 
   {
     "stevearc/conform.nvim",
-    opts = {
-      formatters_by_ft = {
-        lua = { "stylua" },
-        fish = { "fish_indent" },
-        sh = { "shfmt" },
-        markdown = { "prettier" },
-        html = { "prettier" },
-        css = { "prettier" },
-        scss = { "prettier" },
-        vue = { "prettier" },
-        json = { "prettier" },
-        javascript = { "prettier", lsp_format = "fallback" },
-        typescript = { "prettier", lsp_format = "fallback" },
-        javascriptreact = { "prettier", lsp_format = "fallback" },
-        typescriptreact = { "prettier", lsp_format = "fallback" },
-        rust = { "rustfmt" },
-        -- dart = { "dart_format" },
-      },
-      formatters = {
-        injected = { options = { ignore_errors = true } },
-        prettier = {
-          prepend_args = function(self, ctx)
-            -- local util = require("conform.util")
-            -- you may want to include all the possible config file names
-            -- see https://github.com/stevearc/conform.nvim/blob/46c107ad0e7d83b5a7091112ec2994c847577d32/lua/conform/formatters/prettier.lua#L64-L77
-            local config_file = vim.fs.find({ ".prettierrc" }, { upward = true, path = ctx.dirname })[1]
-            if config_file then
-              return {} -- don't need to return anything because it will pick up the file from the cwd
-            else
-              return { "--config=" .. vim.fn.expand("~/.config/nvim/.prettierrc") }
-            end
-          end,
-        },
-        biome = {
-          prepend_args = function(self, ctx)
-            local config_file = vim.fs.find({ "biome.json" }, { upward = true, path = ctx.dirname })[1]
-            if config_file then
-              return {} -- don't need to return anything because it will pick up the file from the cwd
-            else
-              return { "format", "--config-path=" .. vim.fn.expand("~/.config/nvim") }
-            end
-          end,
-        },
-      },
-    },
+    opts = require("config.editor.conform"),
   },
 
   -- 加速jk移动 https://github.com/rainbowhxch/accelerated-jk.nvim

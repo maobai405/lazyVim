@@ -13,6 +13,7 @@ M.keys = {
 
 M.config = {
   defaults = {
+    winblend = 0,
     initial_mode = "insert",
     sorting_strategy = "ascending",
     layout_strategy = "horizontal",

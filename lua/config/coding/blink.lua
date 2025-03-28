@@ -1,5 +1,8 @@
 return {
   completion = {
+    ghost_text = {
+      enabled = true,
+    },
     menu = {
       border = {
         { "󱐋", "WarningMsg" },
@@ -31,12 +34,12 @@ return {
 
   keymap = {
     ["<Tab>"] = {
+      "select_next",
       function(cmp)
         if cmp.snippet_active() then
           return cmp.snippet_forward()
         end
       end,
-      "select_next",
       "fallback",
     },
     ["<S-Tab>"] = { "select_prev", "fallback" },
