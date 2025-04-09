@@ -21,7 +21,12 @@ return {
     "luckasRanarison/tailwind-tools.nvim",
     name = "tailwind-tools",
     build = ":UpdateRemotePlugins",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    lazy = false,
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-telescope/telescope.nvim", -- optional
+      "neovim/nvim-lspconfig", -- optional
+    },
     keys = require("config.tools.tailwind-tools").keys,
     opts = require("config.tools.tailwind-tools").config,
   },

@@ -1,8 +1,5 @@
 return {
-  sources = { "filesystem" },
-  source_selector = {
-    winbar = false,
-  },
+  sources = { "filesystem", "git_status" },
   filesystem = {
     window = {
       mappings = {

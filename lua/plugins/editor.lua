@@ -16,10 +16,16 @@ return {
     keys = require("config.editor.fzf").keys,
     opts = require("config.editor.fzf").config,
   },
-
+  -- 代码格式化
   {
     "stevearc/conform.nvim",
     opts = require("config.editor.conform"),
+  },
+
+  -- git状态
+  {
+    "gitsigns.nvim",
+    opts = require("config.editor.gitsigns").config,
   },
 
   -- 加速jk移动 https://github.com/rainbowhxch/accelerated-jk.nvim

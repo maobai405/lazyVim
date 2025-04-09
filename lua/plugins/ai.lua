@@ -14,7 +14,7 @@ return {
           -- model = "claude-3-7-sonnet-20250219",
           endpoint = "https://ark.cn-beijing.volces.com/api/v3",
           -- model = "deepseek-r1-250120",
-          model = "deepseek-v3-241226",
+          model = "deepseek-v3-250324",
           api_key_name = "DEEPSEEK_API_KEY",
           timeout = 30000, -- Timeout in milliseconds
           temperature = 0,

@@ -7,6 +7,7 @@ local map = LazyVim.safe_keymap_set
 
 -- 不清楚哪儿设置的 n 映射为 i ,删除映射
 vim.keymap.del("n", "n")
+-- vim.api.nvim_del_keymap("n", "n")
 
 -- 调用easydict翻译快捷键
 map({ "n", "v" }, "<leader>mm", function()
@@ -51,7 +52,4 @@ map("n", "<leader>bD", function()
   Snacks.bufdelete.all()
 end, { desc = "删除所有buffer" })
 
-vim.api.nvim_set_keymap("", "<D-v>", "+p<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("!", "<D-v>", "<C-R>+", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("t", "<D-v>", "<C-R>+", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "<D-v>", "<C-R>+", { noremap = true, silent = true })
+map("n", "n", "n")
