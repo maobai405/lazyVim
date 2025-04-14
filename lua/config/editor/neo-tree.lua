@@ -1,5 +1,5 @@
 return {
-  sources = { "filesystem", "git_status" },
+  sources = { "filesystem" },
   filesystem = {
     window = {
       mappings = {

@@ -3,32 +3,32 @@ return {
     ghost_text = {
       enabled = true,
     },
-    -- menu = {
-    --   border = {
-    --     { "󱐋", "WarningMsg" },
-    --     "─",
-    --     "╮",
-    --     "│",
-    --     "╯",
-    --     "─",
-    --     "╰",
-    --     "│",
-    --   },
-    -- },
+    menu = {
+      border = {
+        { "󱐋", "WarningMsg" },
+        "─",
+        "╮",
+        "│",
+        "╯",
+        "─",
+        "╰",
+        "│",
+      },
+    },
     documentation = {
       auto_show = true,
-      -- window = {
-      --   border = {
-      --     { "", "DiagnosticHint" },
-      --     "─",
-      --     "╮",
-      --     "│",
-      --     "╯",
-      --     "─",
-      --     "╰",
-      --     "│",
-      --   },
-      -- },
+      window = {
+        border = {
+          { "", "DiagnosticHint" },
+          "─",
+          "╮",
+          "│",
+          "╯",
+          "─",
+          "╰",
+          "│",
+        },
+      },
     },
   },
 

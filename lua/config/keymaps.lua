@@ -6,8 +6,8 @@ local utils = require("utils")
 local map = LazyVim.safe_keymap_set
 
 -- 不清楚哪儿设置的 n 映射为 i ,删除映射
-vim.keymap.del("n", "n")
--- vim.api.nvim_del_keymap("n", "n")
+-- vim.keymap.del("n", "n")
+vim.api.nvim_del_keymap("n", "n")
 
 -- 调用easydict翻译快捷键
 map({ "n", "v" }, "<leader>mm", function()

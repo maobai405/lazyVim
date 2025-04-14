@@ -1,5 +1,14 @@
 return {
   {
+    "mason.nvim",
+    opts = {
+      ensure_installed = {
+        "biome",
+        "rustfmt",
+      },
+    },
+  },
+  {
     "neovim/nvim-lspconfig",
     opts = function(opt)
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
