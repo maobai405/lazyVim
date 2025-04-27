@@ -1,6 +1,7 @@
 {
   "formatter": {
     "lineWidth": 80,
+    "indentStyle": "space",
     "formatWithErrors": true
   },
   "javascript": {

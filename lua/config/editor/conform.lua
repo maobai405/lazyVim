@@ -55,14 +55,30 @@ return {
       end,
     },
     biome = {
-      args = { "check", "--write", "$FILENAME" },
       stdin = false,
-      append_args = function(self, ctx)
+      -- args = { "lsp-proxy", "--config-path" .. vim.fn.expand("~/.config/nvim") },
+      -- prepend_args = { "check", "--write", "$FILENAME" },
+      -- append_args = function(self, ctx)
+      args = function(self, ctx)
         local config_file = vim.fs.find({ "biome.json" }, { upward = true, path = ctx.dirname })[1]
         if config_file then
-          return {} -- 使用项目内的配置
+          return {
+            "check",
+            "--write",
+            "--linter-enabled=false",
+            "$FILENAME",
+          } -- 使用项目内的配置
         else
-          return { "format", "--config-path=" .. vim.fn.expand("~/.config/nvim") } -- 使用全局配置
+          return {
+            "check",
+            "--write",
+            "--unsafe",
+            "--skip-errors",
+            "--linter-enabled=false",
+            "--assists-enabled=true",
+            "--config-path=" .. vim.fn.expand("~/.config/nvim"),
+            "$FILENAME",
+          } -- 使用全局配置
         end
       end,
     },

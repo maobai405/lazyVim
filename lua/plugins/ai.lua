@@ -1,6 +1,7 @@
 return {
   {
     "yetone/avante.nvim",
+    enabled = false,
     event = "VeryLazy",
     lazy = false,
     version = false, -- set this if you want to always pull the latest change
@@ -10,11 +11,10 @@ return {
       vendors = {
         ["openai-maobai"] = {
           __inherited_from = "openai",
-          -- endpoint = "https://api.v36.cm/v1",
-          -- model = "claude-3-7-sonnet-20250219",
           endpoint = "https://ark.cn-beijing.volces.com/api/v3",
-          -- model = "deepseek-r1-250120",
+          -- endpoint = "https://api.siliconflow.cn/v1",
           model = "deepseek-v3-250324",
+          -- model = "deepseek-ai/DeepSeek-V3",
           api_key_name = "DEEPSEEK_API_KEY",
           timeout = 30000, -- Timeout in milliseconds
           temperature = 0,
@@ -73,5 +73,39 @@ return {
         ft = { "markdown", "Avante" },
       },
     },
+  },
+  -- 代码伴侣 https://codecompanion.olimorris.dev
+  {
+    "olimorris/codecompanion.nvim",
+    lazy = false,
+    keys = require("config.ai.codecompanion.init").keys,
+    opts = require("config.ai.codecompanion.init").config,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      {
+        "j-hui/fidget.nvim",
+        opts = {
+          notification = {
+            window = {
+              winblend = 0,
+            },
+          },
+        },
+      },
+      {
+        "OXY2DEV/markview.nvim",
+        lazy = false,
+        opts = {
+          preview = {
+            filetypes = { "markdown", "codecompanion" },
+            ignore_buftypes = {},
+          },
+        },
+      },
+    },
+    init = function()
+      require("config.ai.codecompanion.fidget-spinner"):init()
+    end,
   },
 }

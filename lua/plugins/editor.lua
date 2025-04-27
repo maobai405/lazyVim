@@ -74,7 +74,7 @@ return {
       {
         "<leader>yz",
         "<cmd>Yazi<cr>",
-        desc = "切换布尔值",
+        desc = "打开yazi面板",
       },
     },
   },
