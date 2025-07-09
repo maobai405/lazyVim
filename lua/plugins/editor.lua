@@ -1,21 +1,4 @@
 return {
-  -- 侧边文件列表🌳 https://github.com/nvim-neo-tree/neo-tree.nvim
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    opts = require("config.editor.neo-tree"),
-  },
-
-  -- 望远镜
-  {
-    "nvim-telescope/telescope.nvim",
-    opts = require("config.editor.telescope").config,
-    keys = require("config.editor.telescope").keys,
-  },
-  {
-    "ibhagwan/fzf-lua",
-    keys = require("config.editor.fzf").keys,
-    opts = require("config.editor.fzf").config,
-  },
   -- 代码格式化
   {
     "stevearc/conform.nvim",
@@ -56,13 +39,6 @@ return {
     opts = {},
   },
 
-  -- 终端 https://github.com/akinsho/toggleterm.nvim
-  {
-    "akinsho/toggleterm.nvim",
-    keys = { { "n", "i", "t" }, "<C-\\>", "<cmd>ToggleTerm<cr>" },
-    opts = require("config.editor.toggleterm"),
-  },
-
   -- 快捷打开yazi https://github.com/DreamMaoMao/yazi.nvim
   {
     "DreamMaoMao/yazi.nvim",
@@ -77,5 +53,23 @@ return {
         desc = "打开yazi面板",
       },
     },
+  },
+
+  -- 浮动终端 https://github.com/nvzone/floaterm
+  {
+    "nvzone/floaterm",
+    dependencies = "nvzone/volt",
+    opts = {
+      border = true,
+      size = { h = 80, w = 80 },
+      mappings = {
+        term = function(buf)
+          vim.keymap.set({ "n", "t" }, "<C-p>", function()
+            require("floaterm.api").cycle_term_bufs("prev")
+          end, { buffer = buf })
+        end,
+      },
+    },
+    cmd = "FloatermToggle",
   },
 }

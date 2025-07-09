@@ -1,13 +1,30 @@
 local M = {}
 
 M.keys = {
-  { "<leader>tt", "<cmd>TailwindConcealToggle<cr>", desc = "Tailwindcss 切换Tailwindcss隐藏" },
+  -- { "<leader>tt", "<cmd>TailwindConcealToggle<cr>", desc = "Tailwindcss 切换Tailwindcss隐藏" },
   { "<leader>ts", "<cmd>TailwindSort<cr>", desc = "Tailwindcss 排序" },
   { "<leader>tj", "<cmd>TailwindNextClass<cr>", desc = "Tailwindcss 将光标移动到下一个类点" },
   { "<leader>tk", "<cmd>TailwindPrevClass<cr>", desc = "Tailwindcss 将光标移动到下一个类点" },
 }
 
 M.config = {
+  server = {
+    settings = {
+      experimental = {
+        classRegex = {
+          "tw`([^`]*)",
+          'tw="([^"]*)',
+          'tw={"([^"}]*)',
+          "tw\\.\\w+`([^`]*)",
+          "tw\\(.*?\\)`([^`]*)",
+          { "clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+          { "classnames\\(([^)]*)\\)", "'([^']*)'" },
+          { "cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]" },
+          { "cn\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)" },
+        },
+      },
+    },
+  },
   document_color = {
     enabled = true, -- can be toggled by commands
     kind = "inline", -- "inline" | "foreground" | "background"
@@ -21,7 +38,6 @@ M.config = {
       fg = "#38BDF8",
     },
   },
-  custom_filetypes = {}, -- see the extension section to learn how it works
 }
 
 return M

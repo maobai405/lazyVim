@@ -18,6 +18,10 @@ map({ "n", "v" }, "<leader>mm", function()
   vim.api.nvim_input("<Esc>")
 end, { desc = "翻译" })
 
+-- 切换终端显识
+-- FloatermToggle
+map({ "n", "i", "t" }, "<C-\\>", "<cmd>FloatermToggle<cr>", { desc = "切换FloatTerminal" })
+
 -- 快速查询单词
 map("n", "?", "*")
 

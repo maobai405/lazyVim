@@ -5,10 +5,15 @@ local M = {}
 -- 默认适配器配置字符串
 -- 用于指定系统默认使用的AI模型适配器，当前默认值为"siliconflow"
 -- 该值会在未显式指定适配器时作为后备选项使用
-local defaultAdapters = "siliconflow"
+local defaultAdapters = "byte_dance"
 
 M.keys = {
-  { "<leader>ap", "<cmd>CodeCompanionChat Toggle<cr>", desc = "切换CodeCompanionChat聊天面板" },
+  {
+    "<leader>ap",
+    mode = { "n", "v" },
+    "<cmd>CodeCompanionChat Toggle<cr>",
+    desc = "切换CodeCompanionChat聊天面板",
+  },
   {
     "<leader>ae",
     mode = { "n", "v" },
@@ -25,7 +30,9 @@ M.config = {
   adapters = {
     -- 火山引擎
     byte_dance = function()
-      return require("codecompanion.adapters").extend("deepseek", {
+      -- openai_compatible
+      -- deepseek
+      return require("codecompanion.adapters").extend("openai_compatible", {
         name = "byte_dance",
         url = "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
         env = {
@@ -35,6 +42,8 @@ M.config = {
         },
         schema = {
           model = {
+            -- deepseek-r1-250528
+            -- deepseek-v3-250324
             default = "deepseek-v3-250324",
             choices = {
               ["deepseek-r1-250120"] = { opts = { can_reason = true } },
@@ -47,7 +56,7 @@ M.config = {
 
     -- 硅基流动
     siliconflow = function()
-      return require("codecompanion.adapters").extend("deepseek", {
+      return require("codecompanion.adapters").extend("openai_compatible", {
         name = "siliconflow",
         url = "https://api.siliconflow.cn/v1/chat/completions",
         env = {
@@ -59,7 +68,7 @@ M.config = {
           model = {
             -- deepseek-ai/DeepSeek-R1
             -- deepseek-ai/DeepSeek-V3
-            default = "deepseek-ai/DeepSeek-V3",
+            default = "deepseek-ai/DeepSeek-R1",
             choices = {
               ["deepseek-ai/DeepSeek-R1"] = { opts = { can_reason = true } },
               "deepseek-ai/DeepSeek-V3",
@@ -175,6 +184,49 @@ M.config = {
               - 性能关键代码标注复杂度分析(O(n)等)
         ]],
         },
+      },
+    },
+  },
+
+  -- 扩展
+  extensions = {
+    history = {
+      enabled = true,
+      opts = {
+        -- Keymap to open history from chat buffer (default: gh)
+        keymap = "gh",
+        -- Keymap to save the current chat manually (when auto_save is disabled)
+        save_chat_keymap = "sc",
+        -- Save all chats by default (disable to save only manually using 'sc')
+        auto_save = true,
+        -- Number of days after which chats are automatically deleted (0 to disable)
+        expiration_days = 0,
+        -- Picker interface ("telescope" or "snacks" or "fzf-lua" or "default")
+        picker = "snacks",
+        ---Automatically generate titles for new chats
+        auto_generate_title = true,
+        title_generation_opts = {
+          ---Adapter for generating titles (defaults to active chat's adapter)
+          adapter = nil, -- e.g "copilot"
+          ---Model for generating titles (defaults to active chat's model)
+          model = nil, -- e.g "gpt-4o"
+        },
+        ---On exiting and entering neovim, loads the last chat on opening chat
+        continue_last_chat = false,
+        ---When chat is cleared with `gx` delete the chat from history
+        delete_on_clearing_chat = false,
+        ---Directory path to save the chats
+        dir_to_save = vim.fn.stdpath("data") .. "/codecompanion-history",
+        ---Enable detailed logging for history extension
+        enable_logging = false,
+      },
+    },
+    mcphub = {
+      callback = "mcphub.extensions.codecompanion",
+      opts = {
+        show_result_in_chat = true, -- 在聊天中显示麦克风工具的结果
+        make_vars = true, -- 将资源转换为#变量
+        make_slash_commands = true, -- 将提示添加为 /slash 命令
       },
     },
   },

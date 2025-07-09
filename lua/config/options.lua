@@ -84,7 +84,7 @@ opt.synmaxcol = 2500 -- 定义语法高亮的最大列数
 opt.tabstop = 2 -- 定义tab键的宽度
 opt.termguicolors = true -- 是否启用真彩色
 opt.timeout = true -- 是否启用超时检测
-opt.timeoutlen = 300 -- 定义超时时间
+opt.timeoutlen = 500 -- 定义超时时间
 opt.ttimeout = true -- 是否启用键盘超时检测
 opt.ttimeoutlen = 50 -- 定义键盘超时时间
 opt.undofile = true -- 是否生成撤销文件
@@ -95,7 +95,7 @@ opt.virtualedit = "block" -- 定义虚拟编辑模式的行为
 opt.whichwrap = "h,l,<,>,[,],~" -- 定义在哪些字符处换行
 opt.wildignore =
   ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**" -- 定义忽略的文件
-opt.wildignorecase = true -- 是否忽略大小写
+opt.wildignorecase = false -- 是否忽略大小写
 opt.winminwidth = 10 -- 定义窗口的最小宽度
 opt.winwidth = 30 -- 定义新窗口的默认宽度
 opt.wrap = false -- 是否自动换行

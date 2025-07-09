@@ -1,15 +1,20 @@
 return {
   {
     "mason.nvim",
+    -- "mason-org/mason.nvim",
+    -- version = "1.11.0",
     opts = {
       ensure_installed = {
         "biome",
         "rustfmt",
+        "prisma-language-server",
       },
     },
   },
   {
     "neovim/nvim-lspconfig",
+    -- "mason-org/mason-lspconfig.nvim",
+    -- version = "1.32.0",
     opts = function(_, opts)
       -- local nvim_lsp = require("lspconfig")
       --
