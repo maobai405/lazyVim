@@ -20,13 +20,12 @@ local function biome_or_prettier(bufnr)
     name = "biome",
   })[1]
   if has_biome_lsp then
-    return {}
+    return { "biome-check" }
   end
   local has_prettier = vim.fs.find(config_files, { upward = true })[1]
   if has_prettier then
     return { "prettier" }
   end
-  return { "biome" }
 end
 
 return {
@@ -37,10 +36,10 @@ return {
     rust = { "rustfmt" },
     markdown = { "prettier" },
     html = { "prettier" },
-    css = { "prettier" },
+    css = biome_or_prettier,
     scss = { "prettier" },
     vue = { "prettier" },
-    json = { "prettier" },
+    json = biome_or_prettier,
     javascript = biome_or_prettier,
     typescript = biome_or_prettier,
     javascriptreact = biome_or_prettier,
@@ -59,7 +58,7 @@ return {
       -- args = { "lsp-proxy", "--config-path" .. vim.fn.expand("~/.config/nvim") },
       -- prepend_args = { "check", "--write", "$FILENAME" },
       -- append_args = function(self, ctx)
-      args = function(self, ctx)
+      prepend_args = function(self, ctx)
         local config_file = vim.fs.find({ "biome.json" }, { upward = true, path = ctx.dirname })[1]
         if config_file then
           return {

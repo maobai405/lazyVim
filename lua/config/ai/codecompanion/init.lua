@@ -43,35 +43,33 @@ M.config = {
         schema = {
           model = {
             -- deepseek-r1-250528
-            -- deepseek-v3-250324
-            default = "deepseek-v3-250324",
+            -- deepseek-v3-1-250821
+            -- kimi-k2-250711
+            default = "deepseek-v3-1-250821",
             choices = {
-              ["deepseek-r1-250120"] = { opts = { can_reason = true } },
-              "deepseek-v3-250324",
+              ["deepseek-r1-250528"] = { opts = { can_reason = true } },
+              "deepseek-v3-1-250821",
+              "kimi-k2-250711",
             },
           },
         },
       })
     end,
 
-    -- 硅基流动
-    siliconflow = function()
+    -- v3api
+    v3api = function()
       return require("codecompanion.adapters").extend("openai_compatible", {
-        name = "siliconflow",
-        url = "https://api.siliconflow.cn/v1/chat/completions",
+        name = "v3api",
+        url = "https://api.gpt.ge/v1/chat/completions",
         env = {
-          api_key = function()
-            return os.getenv("SILICONFLOW_API_KEY")
-          end,
+          api_key = "sk-HDilxHT3viL4T5mC4690107cAa794015Aa86Ee321b9830E1",
         },
         schema = {
           model = {
-            -- deepseek-ai/DeepSeek-R1
-            -- deepseek-ai/DeepSeek-V3
-            default = "deepseek-ai/DeepSeek-R1",
+            default = "claude-sonnet-4-20250514",
             choices = {
-              ["deepseek-ai/DeepSeek-R1"] = { opts = { can_reason = true } },
-              "deepseek-ai/DeepSeek-V3",
+              "claude-sonnet-4-20250514",
+              "gpt-5-mini",
             },
           },
         },

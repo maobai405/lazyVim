@@ -47,6 +47,16 @@ return {
     opts = require("config.tools.tailwind-tools").config,
   },
 
+  -- tailwind-autosort.lua
+  {
+    "y3owk1n/tailwind-autosort.nvim",
+    version = "*", -- remove this if you want to follow `main` branch
+    event = "VeryLazy",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    opts = {}, -- your configuration
+    enabled = false,
+  },
+
   {
     "nvim-flutter/flutter-tools.nvim",
     lazy = false,
