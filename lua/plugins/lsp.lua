@@ -22,7 +22,7 @@ return {
           settings = {
             typescript = {
               preferences = {
-                importModuleSpecifier = "relative", -- 智能选择最短路径
+                importModuleSpecifier = "shortest", -- 智能选择最短路径
                 includePackageJsonAutoImports = "auto",
                 importModuleSpecifierEnding = "minimal", -- 不包含文件扩展名
               },

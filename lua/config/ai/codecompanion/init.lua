@@ -25,6 +25,12 @@ M.keys = {
 M.config = {
   opts = {
     language = "Chinese",
+    system_prompt = [[请遵循以下步骤：
+    1. 回答使用中文。
+    2. 尽可能简洁的回答我的问题, 但关键内容不能缺少, 特别是代码相关的回答一定要将问题相关的完整的代码块进行返回。
+    3. 与答案不相关的内容都不需要输出。
+    4. 特别注意!!!如果需要输出代码, 需要注意代码的类型不能出现不安全的类型定义,如:typeScript中的any
+  ]],
   },
   -- 适配器
   adapters = {
@@ -44,12 +50,32 @@ M.config = {
           model = {
             -- deepseek-r1-250528
             -- deepseek-v3-1-250821
-            -- kimi-k2-250711
+            -- kimi-k2-250905
             default = "deepseek-v3-1-250821",
             choices = {
               ["deepseek-r1-250528"] = { opts = { can_reason = true } },
               "deepseek-v3-1-250821",
-              "kimi-k2-250711",
+              "kimi-k2-250905",
+            },
+          },
+        },
+      })
+    end,
+
+    any_router = function()
+      return require("codecompanion.adapters").extend("claude_code", {
+        name = "any_router",
+        url = "https://anyrouter.top",
+        env = {
+          api_key = function()
+            return os.getenv("ANTHROPIC_AUTH_TOKEN")
+          end,
+        },
+        schema = {
+          model = {
+            default = "sonnet[1m]",
+            choices = {
+              ["sonnet[1m]"] = { opts = { can_reason = true } },
             },
           },
         },
@@ -137,6 +163,23 @@ M.config = {
           opts = {
             contains_code = true,
           },
+        },
+      },
+    },
+    ["Code Format"] = {
+      strategy = "inline",
+      description = "代码格式化",
+      opts = {
+        short_name = "code format",
+        modes = { "v" },
+      },
+      prompts = {
+        {
+          role = "system",
+          content = [[当被要求格式化代码时，请遵循以下步骤：
+            1. 识别编程语言。
+            2. 按照编程语言的格式化要求进行格式化。
+          ]],
         },
       },
     },
