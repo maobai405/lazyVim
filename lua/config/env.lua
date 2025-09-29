@@ -5,8 +5,8 @@
 local M = {
   -- ui 相关
   theme = "catppuccin-macchiato",
-  -- theme = "rose-pine-dawn"
-  -- theme = "everforest"
+  -- theme = "rose-pine",
+  -- theme = "everforest",
 }
 
 return M

@@ -51,10 +51,10 @@ M.config = {
             -- deepseek-r1-250528
             -- deepseek-v3-1-250821
             -- kimi-k2-250905
-            default = "deepseek-v3-1-250821",
+            default = "deepseek-v3-1-terminus",
             choices = {
               ["deepseek-r1-250528"] = { opts = { can_reason = true } },
-              "deepseek-v3-1-250821",
+              "deepseek-v3-1-terminus",
               "kimi-k2-250905",
             },
           },
@@ -223,6 +223,7 @@ M.config = {
               - 对hack/临时代码添加显式标记(TODO/FIXME)
               - 敏感代码需添加安全警告注释
               - 性能关键代码标注复杂度分析(O(n)等)
+              - 函数名上面一定要添加注释注明函数用意
         ]],
         },
       },

@@ -56,7 +56,7 @@ end
 
 function M.background()
   -- 设置透明背景
-  vim.g.neovide_opacity = 0.7
+  vim.g.neovide_opacity = 1
   -- 窗口模糊
   vim.g.neovide_window_blurred = true
 

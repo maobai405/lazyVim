@@ -1,8 +1,6 @@
 return {
   {
     "mason.nvim",
-    -- "mason-org/mason.nvim",
-    -- version = "1.11.0",
     opts = {
       ensure_installed = {
         "biome",
@@ -12,9 +10,13 @@ return {
     },
   },
   {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = { "dart" },
+    },
+  },
+  {
     "neovim/nvim-lspconfig",
-    -- "mason-org/mason-lspconfig.nvim",
-    -- version = "1.32.0",
     opts = function(_, opts)
       opts.servers = vim.tbl_deep_extend("force", opts.servers, {
         -- TypeScript LSP with relative imports preference

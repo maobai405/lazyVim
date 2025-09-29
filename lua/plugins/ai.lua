@@ -33,7 +33,7 @@ return {
       },
       -- 使用内联助手或 @editor 工具时，使用 mini.diff 获得更清晰的差异
       {
-        "echasnovski/mini.diff",
+        "nvim-mini/mini.diff",
         config = function()
           local diff = require("mini.diff")
           diff.setup({
