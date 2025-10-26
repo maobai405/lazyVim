@@ -4,8 +4,8 @@
 
 local opt = vim.opt
 
--- opt.background = "light"
-opt.background = "dark"
+opt.background = "light"
+-- opt.background = "dark"
 opt.pumblend = 0 -- !!! 补全菜单的透明度
 opt.winblend = 0
 -- opt.winborder = "rounded"
@@ -104,5 +104,5 @@ opt.swapfile = false -- 是否生成交换文件
 opt.writebackup = false -- 是否在保存文件时生成备份文件
 opt.paste = false
 opt.mousemoveevent = true -- 相应悬停事件
-opt.guicursor = "n-v:block-blinkon500-blinkoff500,i:ver25-blinkon500-blinkoff500" -- 控制光标的外观和行为
+-- opt.guicursor = "n-v:block-blinkon500-blinkoff500,i:ver25-blinkon500-blinkoff500" -- 控制光标的外观和行为
 -- opt.guicursor = "n-v-c:block-blinkon500-blinkoff500-blinkwait500"

@@ -67,12 +67,13 @@ return {
       require("config.ai.codecompanion.fidget-spinner"):init()
     end,
   },
+
   {
-    "greggh/claude-code.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim", -- Required for git operations
+    "folke/sidekick.nvim",
+    opts = {
+      nes = {
+        enabled = false,
+      },
     },
-    keys = require("config.ai.claude-code").keys,
-    opts = require("config.ai.claude-code").config,
   },
 }

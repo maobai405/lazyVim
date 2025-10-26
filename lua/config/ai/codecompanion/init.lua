@@ -9,7 +9,7 @@ local defaultAdapters = "byte_dance"
 
 M.keys = {
   {
-    "<leader>ap",
+    "<leader>cp",
     mode = { "n", "v" },
     "<cmd>CodeCompanionChat Toggle<cr>",
     desc = "切换CodeCompanionChat聊天面板",
@@ -62,20 +62,20 @@ M.config = {
       })
     end,
 
-    any_router = function()
+    claude = function()
       return require("codecompanion.adapters").extend("claude_code", {
-        name = "any_router",
-        url = "https://anyrouter.top",
+        name = "claude",
+        url = "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
         env = {
           api_key = function()
-            return os.getenv("ANTHROPIC_AUTH_TOKEN")
+            return os.getenv("BYTEDABCE_API_KEY")
           end,
         },
         schema = {
           model = {
-            default = "sonnet[1m]",
+            default = "deepseek-v3-1-terminus",
             choices = {
-              ["sonnet[1m]"] = { opts = { can_reason = true } },
+              "deepseek-v3-1-terminus",
             },
           },
         },
@@ -107,6 +107,14 @@ M.config = {
   strategies = {
     chat = {
       adapter = defaultAdapters,
+      keymaps = {
+        clear = {
+          modes = { n = "gca" },
+          index = 6,
+          callback = "keymaps.clear",
+          description = "Clear chat",
+        },
+      },
     },
     inline = {
       adapter = defaultAdapters,
