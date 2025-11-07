@@ -59,6 +59,14 @@ return {
   {
     "nvzone/floaterm",
     dependencies = "nvzone/volt",
+    keys = {
+      {
+        "<C-\\>",
+        mode = { "n", "i", "t" },
+        "<cmd>FloatermToggle<cr>",
+        desc = "切换FloatTerminal",
+      },
+    },
     opts = {
       border = true,
       size = { h = 80, w = 80 },

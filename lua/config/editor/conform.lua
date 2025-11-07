@@ -32,7 +32,6 @@ return {
   formatters_by_ft = {
     lua = { "stylua" },
     sh = { "shfmt" },
-    fish = { "shfmt" },
     rust = { "rustfmt" },
     markdown = { "prettier" },
     html = { "prettier" },

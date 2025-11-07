@@ -55,7 +55,9 @@ return {
       "stevearc/dressing.nvim", -- optional for vim.ui.select
     },
     keys = {
-      { "<leader>fl", "<cmd>Telescope flutter commands<cr>", desc = "显示flutter命令" },
+      { "<leader>fp", "<cmd>Telescope flutter commands<cr>", desc = "显示flutter命令面板" },
+      { "<leader>flt", "<cmd>FlutterLogToggle<cr>", desc = "切换flutter日志显示" },
+      { "<leader>flc", "<cmd>FlutterLogClear<cr>", desc = "清除flutter日志" },
     },
     config = true,
   },

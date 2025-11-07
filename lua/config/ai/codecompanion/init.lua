@@ -109,7 +109,7 @@ M.config = {
       adapter = defaultAdapters,
       keymaps = {
         clear = {
-          modes = { n = "gca" },
+          modes = { n = "gxa" },
           index = 6,
           callback = "keymaps.clear",
           description = "Clear chat",

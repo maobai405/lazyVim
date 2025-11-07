@@ -3,6 +3,7 @@ return {
     "mason.nvim",
     opts = {
       ensure_installed = {
+        "fish-lsp",
         "biome",
         "rustfmt",
         "prisma-language-server",
@@ -39,12 +40,18 @@ return {
           },
         },
       })
-      local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      -- disable a keymap
-      keys[#keys + 1] = { "K", false }
-      keys[#keys + 1] = { "gd", false }
-      keys[#keys + 1] = { "<C-k>", false, mode = { "i" } }
-      keys[#keys + 1] = { "<leader>ca", false }
+
+      opts.servers = {
+        ["*"] = {
+          keys = {
+            { "K", false },
+            { "<C-k>", false, mode = { "i" } },
+            { "gd", false },
+            { "gh", false },
+            { "<leader>ca", false },
+          },
+        },
+      }
     end,
   },
 

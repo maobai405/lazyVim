@@ -18,7 +18,7 @@ M.config = {
     code_action = "🐼",
   },
   lightbulb = {
-    enable = false,
+    enable = false, -- 不关闭会导致光标换行画面抖动
   },
 }
 

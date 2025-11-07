@@ -4,8 +4,8 @@
 
 local opt = vim.opt
 
-opt.background = "light"
--- opt.background = "dark"
+-- opt.background = "light"
+opt.background = "dark"
 opt.pumblend = 0 -- !!! 补全菜单的透明度
 opt.winblend = 0
 -- opt.winborder = "rounded"
