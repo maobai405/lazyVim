@@ -13,9 +13,8 @@ return {
 
   -- 加速jk移动 https://github.com/rainbowhxch/accelerated-jk.nvim
   {
-    "rainbowhxch/accelerated-jk.nvim",
-    lazy = false,
-    opts = require("config.editor.accelerated-jk"),
+    "PHSix/faster.nvim",
+    event = { "VimEnter *" },
   },
 
   -- 多光标插件 https://github.com/mg979/vim-visual-multi

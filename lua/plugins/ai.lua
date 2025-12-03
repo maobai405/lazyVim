@@ -70,6 +70,16 @@ return {
 
   {
     "folke/sidekick.nvim",
+    keys = {
+      {
+        "<A-\\>",
+        mode = { "n", "i", "t" },
+        function()
+          require("sidekick.cli").toggle({ name = "claude", focus = true })
+        end,
+        desc = "切换claude",
+      },
+    },
     opts = {
       nes = {
         enabled = false,

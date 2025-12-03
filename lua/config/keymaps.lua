@@ -33,8 +33,8 @@ Snacks.keymap.set("v", "<leader>l", "$", { desc = "跳转到行尾" })
 Snacks.keymap.set("n", "<leader>sa", "<cmd>:w<cr>", { desc = "保存文件" })
 
 -- accelerated-jk 加速jk移动
-Snacks.keymap.set("n", "j", "<Plug>(accelerated_jk_gj)")
-Snacks.keymap.set("n", "k", "<Plug>(accelerated_jk_gk)")
+Snacks.keymap.set("n", "j", "<Plug>(faster_move_gj)")
+Snacks.keymap.set("n", "k", "<Plug>(faster_move_gk)")
 Snacks.keymap.set({ "n", "v" }, "<S-j>", "5j")
 Snacks.keymap.set({ "n", "v" }, "<S-k>", "5k")
 
