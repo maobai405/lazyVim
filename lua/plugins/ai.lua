@@ -57,7 +57,7 @@ return {
       },
       {
         "ravitemer/mcphub.nvim",
-        build = "pnpm add -g mcp-hub@latest",
+        build = "pnpm install -g mcp-hub@latest",
         opts = {
           auto_approve = true,
         },
@@ -75,9 +75,9 @@ return {
         "<A-\\>",
         mode = { "n", "i", "t" },
         function()
-          require("sidekick.cli").toggle({ name = "claude", focus = true })
+          require("sidekick.cli").toggle({ name = "opencode", focus = true })
         end,
-        desc = "切换claude",
+        desc = "切换 OpenCode",
       },
     },
     opts = {

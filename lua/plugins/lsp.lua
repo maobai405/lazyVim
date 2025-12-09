@@ -6,6 +6,7 @@ return {
         "fish-lsp",
         "biome",
         "rustfmt",
+        "json-lsp",
         "vtsls",
         "prisma-language-server",
         "tailwindcss-language-server",

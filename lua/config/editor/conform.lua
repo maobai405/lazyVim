@@ -38,7 +38,6 @@ return {
     css = biome_or_prettier,
     scss = { "prettier" },
     vue = { "prettier" },
-    json = biome_or_prettier,
     javascript = biome_or_prettier,
     typescript = biome_or_prettier,
     javascriptreact = biome_or_prettier,
@@ -70,10 +69,7 @@ return {
           return {
             "check",
             "--write",
-            "--unsafe",
-            "--skip-errors",
             "--linter-enabled=false",
-            "--assists-enabled=true",
             "--config-path=" .. vim.fn.expand("~/.config/nvim"),
             "$FILENAME",
           } -- 使用全局配置
