@@ -7,9 +7,11 @@ return {
     keys = require("config.ai.codecompanion.init").keys,
     opts = require("config.ai.codecompanion.init").config,
     dependencies = {
-      "nvim-lua/plenary.nvim",
+      { "nvim-lua/plenary.nvim", version = false },
       "nvim-treesitter/nvim-treesitter",
+      "ravitemer/mcphub.nvim",
       "ravitemer/codecompanion-history.nvim",
+      "franco-ruggeri/codecompanion-spinner.nvim",
       {
         "j-hui/fidget.nvim",
         opts = {
@@ -21,15 +23,8 @@ return {
         },
       },
       {
-        "OXY2DEV/markview.nvim",
-        lazy = false,
-        opts = {
-          experimental = { check_rtp_message = false },
-          preview = {
-            filetypes = { "markdown", "codecompanion" },
-            ignore_buftypes = {},
-          },
-        },
+        "MeanderingProgrammer/render-markdown.nvim",
+        ft = { "markdown", "codecompanion" },
       },
       -- 使用内联助手或 @editor 工具时，使用 mini.diff 获得更清晰的差异
       {
@@ -55,17 +50,18 @@ return {
           },
         },
       },
-      {
-        "ravitemer/mcphub.nvim",
-        build = "pnpm install -g mcp-hub@latest",
-        opts = {
-          auto_approve = true,
-        },
-      },
     },
-    init = function()
-      require("config.ai.codecompanion.fidget-spinner"):init()
-    end,
+  },
+
+  {
+    "ravitemer/mcphub.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    build = "bun add -g mcp-hub@latest",
+    opts = {
+      port = 37373,
+    },
   },
 
   {
@@ -83,6 +79,12 @@ return {
     opts = {
       nes = {
         enabled = false,
+      },
+      cli = {
+        mux = {
+          enabled = true,
+          backend = "zellij",
+        },
       },
     },
   },

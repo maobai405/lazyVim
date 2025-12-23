@@ -1,3 +1,5 @@
+local HOME = os.getenv("HOME")
+
 return {
   {
     "mason.nvim",

@@ -38,6 +38,8 @@ return {
     css = biome_or_prettier,
     scss = { "prettier" },
     vue = { "prettier" },
+    json = biome_or_prettier,
+    jsonc = biome_or_prettier,
     javascript = biome_or_prettier,
     typescript = biome_or_prettier,
     javascriptreact = biome_or_prettier,
