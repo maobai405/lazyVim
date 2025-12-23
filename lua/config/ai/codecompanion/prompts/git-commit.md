@@ -5,7 +5,6 @@ description: 分析Git变更并自动生成符合规范的提交消息
 opts:
   alias: git-commit
   is_slash_cmd: true
-  intro_message: 我会帮你分析Git变更并生成一份规范的提交消息。首先，我需要检查当前仓库的状态和已暂存的变更。请稍等，我正在分析这些变更……
 ---
 
 ## system
@@ -36,11 +35,16 @@ opts:
    - 将草稿写入 `.git/COMMIT_EDITMSG`，并用于 `git commit`。
 
 5. **执行提交**
-   - 单提交场景：`git commit [-S] [--no-verify] [-s] -F .git/COMMIT_EDITMSG`
+   - 单提交场景：`git commit [-S] [-s] -F .git/COMMIT_EDITMSG`
    - 多提交场景（如接受拆分建议）：按分组给出 `git add <paths> && git commit ...` 的明确指令；若允许执行则逐一完成。
 
 6. **安全回滚**
    - 如误暂存，可用 `git restore --staged <paths>` 撤回暂存（命令会给出指令，不修改文件内容）。
+
+
+## user
+
+请分析我的Git变更并生成合适的提交信息
 
 拆分提交指南：
 1. **不同关注点**：互不相关的功能/模块改动应拆分。
@@ -54,8 +58,4 @@ opts:
 - **尊重钩子**：默认执行本地 Git 钩子。
 - **不改源码内容**：命令只读写 `.git/COMMIT_EDITMSG` 与暂存区；不会直接编辑工作区文件。
 - **安全提示**：在 rebase/merge 冲突、detached HEAD 等状态下会先提示处理/确认再继续。
-- **可审可控**：如开启 `confirm: true`，每个实际 `git add`/`git commit` 步骤都会进行二次确认。
 
-## user
-
-请分析我的Git变更并生成合适的提交信息

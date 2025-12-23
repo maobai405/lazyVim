@@ -87,6 +87,26 @@ M.config = {
             require_approval_before = false,
           },
         },
+        ["file_search"] = {
+          opts = {
+            require_approval_before = false,
+          },
+        },
+        ["grep_search"] = {
+          opts = {
+            require_approval_before = false,
+          },
+        },
+        ["insert_edit_into_file"] = {
+          opts = {
+            require_approval_before = false,
+          },
+        },
+        ["read_file"] = {
+          opts = {
+            require_approval_before = false,
+          },
+        },
       },
     },
     inline = {
