@@ -1,8 +1,8 @@
 local M = {}
 
 --- @type string # 默认适配器名称，可选值为"siliconflow"或其他支持的适配器
--- xai | yunyi | MiniMax | byte_dance
-local defaultAdapters = "xai"
+-- codeplan | yunyi | MiniMax | byte_dance
+local defaultAdapters = "codeplan"
 
 M.keys = {
   {
@@ -28,14 +28,14 @@ M.config = {
   -- 适配器
   adapters = {
     http = {
-      -- xai
-      xai = function()
-        return require("codecompanion.adapters").extend("openai_compatible", {
-          name = "xai",
-          url = "https://tensdaq-api.x-aio.com/v1/chat/completions",
+      -- codeplan
+      codeplan = function()
+        return require("codecompanion.adapters").extend("anthropic", {
+          name = "codeplan",
+          url = "https://code-api.x-aio.com/anthropic/v1/messages",
           env = {
             api_key = function()
-              return os.getenv("XAI_API_KEY")
+              return os.getenv("CODEPLAN_API_KEY")
             end,
           },
           schema = {
@@ -44,6 +44,7 @@ M.config = {
               choices = {
                 "DeepSeek-V3.2",
                 "XAIO-G-3-Pro-Preview",
+                "XAIO-C-4-5-Sonnet",
               },
             },
           },
@@ -80,6 +81,11 @@ M.config = {
       tools = {
         opts = {
           default_tools = { "full_stack_dev" },
+        },
+        ["cmd_runner"] = {
+          opts = {
+            require_approval_before = false,
+          },
         },
       },
     },
@@ -168,9 +174,9 @@ M.config = {
           ---Model for generating titles (defaults to current chat model)
           model = nil, -- "gpt-4o"
           ---Number of user prompts after which to refresh the title (0 to disable)
-          refresh_every_n_prompts = 3, -- e.g., 3 to refresh after every 3rd user prompt
+          refresh_every_n_prompts = 0, -- e.g., 3 to refresh after every 3rd user prompt
           ---Maximum number of times to refresh the title (default: 3)
-          max_refreshes = 9,
+          max_refreshes = 3,
           format_title = function(original_title)
             -- this can be a custom function that applies some custom
             -- formatting to the title.
