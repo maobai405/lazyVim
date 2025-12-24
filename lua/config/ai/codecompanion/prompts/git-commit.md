@@ -39,13 +39,13 @@ opts:
 
 5. **执行提交**
    - 单提交场景：
-     - 将commit草稿写入 `.git/COMMIT_EDITMSG`
-     - 显示命令预览：`git commit -F .git/COMMIT_EDITMSG`
+     - 将生成的commit草稿写入 `.git/COMMIT_EDITMSG`
+     - 执行命令：`git commit -F .git/COMMIT_EDITMSG`
    - 多提交场景：
      - 为每个拆分组提供完整的执行指令：
-       ```bash
-       git add <specific-paths> && git commit -m "<generated-message>"
-       ```
+      1. `git add <specific-paths>`
+      2. 将生成的commit草稿写入 `.git/COMMIT_EDITMSG`
+      3. 执行命令：`git commit -F .git/COMMIT_EDITMSG`
 
 6. **安全回滚**
    - 如误暂存，可用 `git restore --staged <paths>` 撤回暂存（命令会给出指令，不修改文件内容）。
