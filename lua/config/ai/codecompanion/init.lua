@@ -43,8 +43,8 @@ M.config = {
               default = "DeepSeek-V3.2",
               choices = {
                 "DeepSeek-V3.2",
-                "XAIO-G-3-Pro-Preview",
-                "XAIO-C-4-5-Sonnet",
+                "XAIO-C-4-5-Opus",
+                "GLM-4.7",
               },
             },
           },
