@@ -130,7 +130,7 @@ M.config = {
     markdown = {
       dirs = {
         vim.fn.getcwd() .. "/.prompts",
-        "~/.config/nvim/lua/config/ai/codecompanion/prompts",
+        "~/.config/opencode/command",
       },
     },
   },
@@ -151,7 +151,7 @@ M.config = {
         { path = "CLAUDE.md", parser = "claude" },
         { path = "CLAUDE.local.md", parser = "claude" },
         { path = "~/.claude/CLAUDE.md", parser = "claude" },
-        { path = "~/.config/nvim/lua/config/ai/codecompanion/rules", files = "*.md", parser = "claude" },
+        { path = "~/.config/opencode/output-styles", files = "*.md", parser = "claude" },
       },
       is_preset = true,
     },
