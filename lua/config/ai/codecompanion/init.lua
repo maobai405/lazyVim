@@ -40,32 +40,12 @@ M.config = {
           },
           schema = {
             model = {
-              default = "DeepSeek-V3.2",
+              default = "XAIO-C-4-5-Sonnet",
               choices = {
                 "DeepSeek-V3.2",
                 "XAIO-C-4-5-Opus",
+                "XAIO-C-4-5-Sonnet",
                 "GLM-4.7",
-              },
-            },
-          },
-        })
-      end,
-      -- yunyi
-      yunyi = function()
-        return require("codecompanion.adapters").extend("openai_responses", {
-          name = "yunyi",
-          url = "https://yunyi.cfd/codex/responses",
-          env = {
-            api_key = function()
-              return os.getenv("YUNYI_API_KEY")
-            end,
-          },
-          schema = {
-            model = {
-              default = "gpt-5.1-codex-max",
-              choices = {
-                "gpt-5.2",
-                "gpt-5.1-codex-max",
               },
             },
           },
