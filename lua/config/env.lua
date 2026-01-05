@@ -4,11 +4,11 @@
 ---@type Options
 local M = {
   -- ui 相关
-  theme = "catppuccin",
+  -- theme = "catppuccin",
   -- theme = "rose-pine",
   -- theme = "everforest",
   -- theme = "ayu",
-  -- theme = "tokyonight",
+  theme = "tokyonight",
 }
 
 return M

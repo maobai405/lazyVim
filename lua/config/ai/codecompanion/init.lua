@@ -1,7 +1,7 @@
 local M = {}
 
 --- @type string # 默认适配器名称，可选值为"siliconflow"或其他支持的适配器
--- codeplan | yunyi | MiniMax | byte_dance
+-- codeplan
 local defaultAdapters = "codeplan"
 
 M.keys = {
@@ -33,6 +33,7 @@ M.config = {
         return require("codecompanion.adapters").extend("anthropic", {
           name = "codeplan",
           url = "https://code-api.x-aio.com/anthropic/v1/messages",
+          -- url = "https://code-api.x-aio.com/v1/chat/completions",
           env = {
             api_key = function()
               return os.getenv("CODEPLAN_API_KEY")
@@ -42,10 +43,12 @@ M.config = {
             model = {
               default = "XAIO-C-4-5-Sonnet",
               choices = {
-                "DeepSeek-V3.2",
-                "XAIO-C-4-5-Opus",
                 "XAIO-C-4-5-Sonnet",
+                "XAIO-C-4-5-Haiku",
+                "XAIO-C-4-5-Opus",
+                "DeepSeek-V3.2",
                 "GLM-4.7",
+                "MiniMax-M2.1",
               },
             },
           },
@@ -60,48 +63,43 @@ M.config = {
       adapter = defaultAdapters,
       tools = {
         opts = {
-          default_tools = { "full_stack_dev" },
+          default_tools = { "neovim", "memory", "full_stack_dev" },
         },
         ["cmd_runner"] = {
           opts = {
             require_approval_before = false,
+            require_confirmation_after = false,
+          },
+        },
+        ["create_file"] = {
+          opts = {
+            require_approval_before = false,
+            require_confirmation_after = false,
           },
         },
         ["file_search"] = {
           opts = {
             require_approval_before = false,
+            require_confirmation_after = false,
           },
         },
         ["grep_search"] = {
           opts = {
             require_approval_before = false,
+            require_confirmation_after = false,
           },
         },
         ["insert_edit_into_file"] = {
           opts = {
             require_approval_before = false,
+            require_confirmation_after = false,
           },
         },
         ["read_file"] = {
           opts = {
             require_approval_before = false,
+            require_confirmation_after = false,
           },
-        },
-      },
-    },
-    inline = {
-      adapter = defaultAdapters,
-      tools = {
-        opts = {
-          default_tools = { "full_stack_dev" },
-        },
-      },
-    },
-    cmd = {
-      adapter = defaultAdapters,
-      tools = {
-        opts = {
-          default_tools = { "full_stack_dev" },
         },
       },
     },
@@ -109,7 +107,6 @@ M.config = {
   prompt_library = {
     markdown = {
       dirs = {
-        vim.fn.getcwd() .. "/.prompts",
         "~/.config/opencode/command",
       },
     },
@@ -117,30 +114,30 @@ M.config = {
 
   -- 规则
   rules = {
-    default = {
-      description = "Collection of common files for all projects",
-      files = {
-        ".clinerules",
-        ".cursorrules",
-        ".goosehints",
-        ".rules",
-        ".windsurfrules",
-        ".github/copilot-instructions.md",
-        "AGENT.md",
-        "AGENTS.md",
-        { path = "CLAUDE.md", parser = "claude" },
-        { path = "CLAUDE.local.md", parser = "claude" },
-        { path = "~/.claude/CLAUDE.md", parser = "claude" },
-        { path = "~/.config/opencode/output-styles", files = "*.md", parser = "claude" },
-      },
-      is_preset = true,
-    },
-    opts = {
-      chat = {
-        enabled = true,
-        default_rules = "default", -- The rule groups to load
-      },
-    },
+    -- default = {
+    --   description = "Collection of common files for all projects",
+    --   files = {
+    --     ".clinerules",
+    --     ".cursorrules",
+    --     ".goosehints",
+    --     ".rules",
+    --     ".windsurfrules",
+    --     ".github/copilot-instructions.md",
+    --     "AGENT.md",
+    --     "AGENTS.md",
+    --     { path = "CLAUDE.md", parser = "claude" },
+    --     { path = "CLAUDE.local.md", parser = "claude" },
+    --     { path = "~/.claude/CLAUDE.md", parser = "claude" },
+    --     { path = "~/.config/opencode/output-styles", files = "*.md", parser = "claude" },
+    --   },
+    --   is_preset = true,
+    -- },
+    -- opts = {
+    --   chat = {
+    --     enabled = true,
+    --     default_rules = "default", -- The rule groups to load
+    --   },
+    -- },
   },
 
   -- 扩展
@@ -214,9 +211,16 @@ M.config = {
     mcphub = {
       callback = "mcphub.extensions.codecompanion",
       opts = {
-        make_vars = true,
-        make_slash_commands = true,
-        show_result_in_chat = true,
+        -- MCP Tools
+        make_tools = true, -- Make individual tools (@server__tool) and server groups (@server) from MCP servers
+        show_server_tools_in_chat = true, -- Show individual tools in chat completion (when make_tools=true)
+        add_mcp_prefix_to_tool_names = false, -- Add mcp__ prefix (e.g `@mcp__github`, `@mcp__neovim__list_issues`)
+        show_result_in_chat = true, -- Show tool results directly in chat buffer
+        format_tool = nil, -- function(tool_name:string, tool: CodeCompanion.Agent.Tool) : string Function to format tool names to show in the chat buffer
+        -- MCP Resources
+        make_vars = true, -- Convert MCP resources to #variables for prompts
+        -- MCP Prompts
+        make_slash_commands = true, -- Add MCP prompts as /slash commands
       },
     },
     spinner = {},
