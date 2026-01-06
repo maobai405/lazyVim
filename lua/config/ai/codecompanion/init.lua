@@ -3,6 +3,16 @@ local M = {}
 --- @type string # 默认适配器名称，可选值为"siliconflow"或其他支持的适配器
 -- codeplan
 local defaultAdapters = "codeplan"
+local models = {
+  "XAIO-C-4-5-Sonnet",
+  "XAIO-C-4-5-Haiku",
+  "XAIO-C-4-5-Opus",
+  "DeepSeek-V3.2",
+  "GLM-4.7",
+  "MiniMax-M2.1",
+}
+local defaultModel = "XAIO-C-4-5-Sonnet"
+local secondaryModel = "GLM-4.7"
 
 M.keys = {
   {
@@ -41,15 +51,8 @@ M.config = {
           },
           schema = {
             model = {
-              default = "XAIO-C-4-5-Sonnet",
-              choices = {
-                "XAIO-C-4-5-Sonnet",
-                "XAIO-C-4-5-Haiku",
-                "XAIO-C-4-5-Opus",
-                "DeepSeek-V3.2",
-                "GLM-4.7",
-                "MiniMax-M2.1",
-              },
+              choices = models,
+              default = defaultModel,
             },
           },
         })
@@ -61,33 +64,15 @@ M.config = {
   interactions = {
     chat = {
       adapter = defaultAdapters,
+      variables = {
+        opts = {
+          default_variables = { "mcp:neovim://buffer" },
+        },
+      },
       tools = {
         opts = {
-          default_tools = { "neovim", "memory", "full_stack_dev" },
-        },
-        ["cmd_runner"] = {
-          opts = {
-            require_approval_before = false,
-            require_confirmation_after = false,
-          },
-        },
-        ["create_file"] = {
-          opts = {
-            require_approval_before = false,
-            require_confirmation_after = false,
-          },
-        },
-        ["file_search"] = {
-          opts = {
-            require_approval_before = false,
-            require_confirmation_after = false,
-          },
-        },
-        ["grep_search"] = {
-          opts = {
-            require_approval_before = false,
-            require_confirmation_after = false,
-          },
+          -- default_tools = { "neovim", "memory", "full_stack_dev" },
+          default_tools = { "neovim", "memory" },
         },
         ["insert_edit_into_file"] = {
           opts = {
@@ -95,10 +80,33 @@ M.config = {
             require_confirmation_after = false,
           },
         },
+        ["cmd_runner"] = {
+          opts = {
+            require_approval_before = false,
+            require_cmd_approval = false,
+          },
+        },
+        ["create_file"] = {
+          opts = {
+            require_approval_before = false,
+            require_cmd_approval = false,
+          },
+        },
+        ["file_search"] = {
+          opts = {
+            require_cmd_approval = false,
+          },
+        },
+        ["grep_search"] = {
+          opts = {
+            require_approval_before = false,
+            require_cmd_approval = false,
+          },
+        },
         ["read_file"] = {
           opts = {
             require_approval_before = false,
-            require_confirmation_after = false,
+            require_cmd_approval = false,
           },
         },
       },
@@ -113,32 +121,7 @@ M.config = {
   },
 
   -- 规则
-  rules = {
-    -- default = {
-    --   description = "Collection of common files for all projects",
-    --   files = {
-    --     ".clinerules",
-    --     ".cursorrules",
-    --     ".goosehints",
-    --     ".rules",
-    --     ".windsurfrules",
-    --     ".github/copilot-instructions.md",
-    --     "AGENT.md",
-    --     "AGENTS.md",
-    --     { path = "CLAUDE.md", parser = "claude" },
-    --     { path = "CLAUDE.local.md", parser = "claude" },
-    --     { path = "~/.claude/CLAUDE.md", parser = "claude" },
-    --     { path = "~/.config/opencode/output-styles", files = "*.md", parser = "claude" },
-    --   },
-    --   is_preset = true,
-    -- },
-    -- opts = {
-    --   chat = {
-    --     enabled = true,
-    --     default_rules = "default", -- The rule groups to load
-    --   },
-    -- },
-  },
+  rules = {},
 
   -- 扩展
   extensions = {
@@ -151,11 +134,11 @@ M.config = {
         save_chat_keymap = "sc",
         -- Save all chats by default (disable to save only manually using 'sc')
         auto_save = true,
-        -- Number of days after which chats are automatically deleted (0 to disable)
-        expiration_days = 0,
-        -- Picker interface (auto resolved to a valid picker)
+        -- 聊天记录自动删除的天数（0表示禁用该功能）
+        expiration_days = 1,
+        -- 选择器界面（自动解析为有效的选择器）
         picker = "snacks", --- ("telescope", "snacks", "fzf-lua", or "default")
-        ---Optional filter function to control which chats are shown when browsing
+        -- 可选的过滤功能，用于控制浏览时显示的聊天记录。
         chat_filter = nil, -- function(chat_data) return boolean end
         -- Customize picker keymaps (optional)
         picker_keymaps = {
@@ -167,9 +150,9 @@ M.config = {
         auto_generate_title = true,
         title_generation_opts = {
           ---Adapter for generating titles (defaults to current chat adapter)
-          adapter = nil, -- "copilot"
+          adapter = defaultAdapters, -- "copilot"
           ---Model for generating titles (defaults to current chat model)
-          model = nil, -- "gpt-4o"
+          model = secondaryModel, -- "gpt-4o"
           ---Number of user prompts after which to refresh the title (0 to disable)
           refresh_every_n_prompts = 0, -- e.g., 3 to refresh after every 3rd user prompt
           ---Maximum number of times to refresh the title (default: 3)
@@ -226,5 +209,39 @@ M.config = {
     spinner = {},
   },
 }
+
+local context_list = {
+  "#{mcp:neovim://buffer}",
+  "#{mcp:neovim://diagnostics/buffer}",
+}
+
+-- Function to insert all stickies after the last "> - " line
+local function insert_stickies(bufnr)
+  bufnr = bufnr or vim.api.nvim_get_current_buf()
+  local line_count = vim.api.nvim_buf_line_count(bufnr)
+  local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+
+  -- 从后往前查找最后一个包含 "> - " 的行
+  local insert_line = line_count
+  for i = #lines, 1, -1 do
+    if lines[i]:match("^>%s*%-%s") then
+      -- 找到最后一个 "> - " 行,在其下方第二行插入(即跳过一行)
+      insert_line = i + 1
+      break
+    end
+  end
+
+  vim.api.nvim_buf_set_lines(bufnr, insert_line, insert_line, false, context_list)
+end
+
+local group = vim.api.nvim_create_augroup("CodeCompanionAutoVariables", {})
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "CodeCompanionChatCreated",
+  group = group,
+  callback = function(request)
+    insert_stickies(request.buf)
+  end,
+})
 
 return M
